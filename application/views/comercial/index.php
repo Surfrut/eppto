@@ -56,6 +56,7 @@
    </a>
    <ul>
      <li><a class="btn-floating blue btn_descargar"><i class="material-icons">cloud_download</i></a></li>
+     <li><a class="btn-floating blue btn_pptoMasivo"><i class="material-icons">add_box</i></a></li>
      <li><a class="btn-floating blue btn_nuevoPresupuesto"><i class="material-icons">add</i></a></li>
    </ul>
  </div>
@@ -241,6 +242,32 @@
 
 <!-- ESTRUCTURA DEL MODAL AGREGAR PRESUPUESTO  -->
 
+<!-- ESTRUCTURA MODAL CARGA MASIVA -->
+<div id="modal1" class="modal modal_cargaMasiva">
+  <div class="modal-content">
+    <h4>Selecciona archivo del Presupuesto</h4>
+    <form action="#">
+      <div class="file-field input-field">
+        <div class="btn">
+          <span>Archivo</span>
+          <input type="file">
+        </div>
+        <div class="file-path-wrapper">
+          <input class="file-path validate" type="text">
+        </div>
+      </div>
+    </form>
+    <div class="right">
+      <br>
+      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Cancelar</a>
+      <a href="#!" class="modal-action waves-effect waves-green btn btn_cargarMasivo">Cargar</a>
+      <br>
+      <br>
+    </div>
+  </div>
+</div>
+<!-- ESTRUCTURA MODAL CARGA MASIVA -->
+
 
     <!--Import jQuery before materialize.js-->
     <script type="text/javascript" src="<?php base_url() ?>js/jquery-3.1.1.js"></script>
@@ -249,6 +276,7 @@
     <script type="text/javascript" src="<?php base_url() ?>js/jsgrid.min.js"></script>
     <script type="text/javascript" src="<?php base_url() ?>js/db.js"></script>
     <script type="text/javascript" src="<?php base_url() ?>js/comercial/comercial_j.js"></script>
+    <script type="text/javascript" src="<?php base_url() ?>js/comercial/com_carga_j.js"></script>
 
   </body>
 </html>
