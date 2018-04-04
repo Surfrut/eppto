@@ -1,0 +1,54 @@
+nav{
+	/*COLOR INSTITUCIONAL*/
+	background-color: #2872bb;
+}
+
+.progress .indeterminate {
+  background-color: #2872bb;
+}
+
+.input_cliente{
+	display: none;
+}
+
+.input_descripcion{
+	display: none;
+}
+
+.card .card-action{
+	padding-top: 4px
+}
+
+.card .card-content{
+	padding-top: 2px
+}
+
+.card .card-content_visita{
+	padding-top: 0px
+}
+
+th, td{
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+.jsgrid-header-row th{
+	/*padding-left: 50px;
+	padding-right: 50px;*/
+}
+
+.text-middle{
+	vertical-align: middle;
+}
+
+.nivel1{
+	background-color: rgb(20, 184, 215) !important
+}
+
+.nivel2{
+	background-color: rgb(20, 145, 184) !important
+}
+
+.nivel3{
+	background-color: rgb(40, 116, 176) !important
+}
