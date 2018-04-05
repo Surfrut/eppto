@@ -246,11 +246,11 @@
 <div id="modal1" class="modal modal_cargaMasiva">
   <div class="modal-content">
     <h4>Selecciona archivo del Presupuesto</h4>
-    <form action="#">
+    <form action="#" class="formulario_archivo" enctype="multipart/form-data" name="mi_archivo">
       <div class="file-field input-field">
         <div class="btn">
           <span>Archivo</span>
-          <input type="file">
+          <input type="file" name="mi_archivo">
         </div>
         <div class="file-path-wrapper">
           <input class="file-path validate" type="text">
