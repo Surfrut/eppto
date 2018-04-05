@@ -20,22 +20,14 @@ $(".btn_cargarMasivo").click(function(){
        success: function(data){
          $('.mod_preloader').hide();
          $('.mod_contenido').show();
+         let loquesea = JSON.parse(data);
+         let suma = 0
+         for (var i = 0; i < loquesea.length; i++) {
+           console.log(parseInt(suma) + parseInt(loquesea[i]['ag']));
+         }
+         console.log(suma);
+         $('.mod_contenido').append(`Se han cargado ${(loquesea.length)-1} lineas del archivo.<br>`)
 
-         let loquesea
-         loquesea = JSON.parse(data);
-         let table = `<table>
-        <thead>
-          <tr class='tr_head'>
-          </tr>
-        </thead>
-
-        <tbody class='tr_body'>
-        </tbody>
-      </table>`
-      $('.mod_contenido').html(table);
-         // for (var i = 0; i < loquesea.length; i++) {
-         //   $('.tr_body').append(`<tr><td>${loquesea[i]['a']}</td><td>${loquesea[i]['b']}</td><td>${loquesea[i]['c']}</td><td>${loquesea[i]['d']}</td><td>${loquesea[i]['e']}</td></tr>`);
-         // }
          console.log("success com_carga_c/cargaArchivos");
        },
        error: function(data){
