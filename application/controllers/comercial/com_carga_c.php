@@ -5,11 +5,10 @@ class com_carga_c extends CI_Controller{
 
   public function __construct(){
     parent::__construct();
-    $this->load->library('Excel');
   }
-
   //FUNCTION cargaArchivo
-  public function cargaArchivo(){
+  function cargaArchivo(){
+    // $archivo = $this->input->post('mi_archivo');
     $mi_archivo = 'mi_archivo';
     $config['upload_path'] = "./uploads/";
     $config['file_name'] = "asd";
@@ -22,8 +21,11 @@ class com_carga_c extends CI_Controller{
         $data['uploadError'] = $this->upload->display_errors();
         echo $this->upload->display_errors();
         return;
+    }else{
+      $data['uploadSuccess'] = $this->upload->data();
+      //LEER ARCHIVO
+      var_dump($mi_archivo);
     }
-    $data['uploadSuccess'] = $this->upload->data();
 
   }
   //FUNCTION cargaArchivo
