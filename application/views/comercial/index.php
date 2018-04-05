@@ -244,25 +244,72 @@
 
 <!-- ESTRUCTURA MODAL CARGA MASIVA -->
 <div id="modal1" class="modal modal_cargaMasiva">
-  <div class="modal-content">
-    <h4>Selecciona archivo del Presupuesto</h4>
-    <form action="#" class="formulario_archivo" enctype="multipart/form-data" name="mi_archivo">
-      <div class="file-field input-field">
-        <div class="btn">
-          <span>Archivo</span>
-          <input type="file" name="mi_archivo">
-        </div>
-        <div class="file-path-wrapper">
-          <input class="file-path validate" type="text">
+  <div class="modal-content ">
+    <div class="mod_preloader center">
+      <br>
+      <div class="preloader-wrapper big active">
+      <div class="spinner-layer spinner-blue">
+        <div class="circle-clipper left">
+          <div class="circle"></div>
+        </div><div class="gap-patch">
+          <div class="circle"></div>
+        </div><div class="circle-clipper right">
+          <div class="circle"></div>
         </div>
       </div>
-    </form>
-    <div class="right">
-      <br>
-      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Cancelar</a>
-      <a href="#!" class="modal-action waves-effect waves-green btn btn_cargarMasivo">Cargar</a>
-      <br>
-      <br>
+
+      <div class="spinner-layer spinner-red">
+        <div class="circle-clipper left">
+          <div class="circle"></div>
+        </div><div class="gap-patch">
+          <div class="circle"></div>
+        </div><div class="circle-clipper right">
+          <div class="circle"></div>
+        </div>
+      </div>
+
+      <div class="spinner-layer spinner-yellow">
+        <div class="circle-clipper left">
+          <div class="circle"></div>
+        </div><div class="gap-patch">
+          <div class="circle"></div>
+        </div><div class="circle-clipper right">
+          <div class="circle"></div>
+        </div>
+      </div>
+
+      <div class="spinner-layer spinner-green">
+        <div class="circle-clipper left">
+          <div class="circle"></div>
+        </div><div class="gap-patch">
+          <div class="circle"></div>
+        </div><div class="circle-clipper right">
+          <div class="circle"></div>
+        </div>
+      </div>
+    </div>
+    <br>
+    </div>
+    <div class="mod_contenido">
+      <h4>Selecciona el archivo del Presupuesto</h4>
+      <form action="#" class="formulario_archivo" enctype="multipart/form-data" name="mi_archivo">
+        <div class="file-field input-field">
+          <div class="btn color_eppto">
+            <span>Archivo</span>
+            <input type="file" name="mi_archivo">
+          </div>
+          <div class="file-path-wrapper ">
+            <input class="file-path validate txt_archivo" type="text" value="">
+          </div>
+        </div>
+      </form>
+      <div class="right">
+        <br>
+        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Cancelar</a>
+        <a href="#!" class="modal-action waves-effect waves-green btn btn_cargarMasivo color_eppto">Cargar</a>
+        <br>
+        <br>
+      </div>
     </div>
   </div>
 </div>

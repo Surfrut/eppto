@@ -1,42 +1,46 @@
+$('.mod_preloader').hide();
 $('.btn_pptoMasivo').on('click', function(){
   $('.modal_cargaMasiva').modal('open');
 });
 
 $(".btn_cargarMasivo").click(function(){
  var formData = new FormData($(".formulario_archivo")[0]);
-   // $(".btn_cargarMasivo").css({"display":"none"})
-   console.log(base_url+"uploads/");
  $.ajax({
        url: base_url+'comercial/com_carga_c/cargaArchivo',
        type: 'POST',
-       // Form data
-       //datos del formulario
        data: formData,
-       //necesario para subir archivos via ajax
        cache: false,
        contentType: false,
        processData: false,
-       //mientras enviamos el archivo
        beforeSend: function(){
          console.log("subiendo");
+         $('.mod_contenido').hide();
+         $('.mod_preloader').show('200');
        },
-       //una vez finalizado correctamente
        success: function(data){
-         // console.log(data);
-         console.log("listo");
-         // $(".CIM").css({"display":"inline-block"})
-           // message = $("<span class='success'>La imagen ha subido correctamente.</span>");
-           // showMessage(message);
-           // if(isImage(fileExtension))
-           // {
-           //     $(".showImage").html("<img src='files/"+data+"' />");
-           // }
+         $('.mod_preloader').hide();
+         $('.mod_contenido').show();
+
+         let loquesea
+         loquesea = JSON.parse(data);
+         let table = `<table>
+        <thead>
+          <tr class='tr_head'>
+          </tr>
+        </thead>
+
+        <tbody class='tr_body'>
+        </tbody>
+      </table>`
+      $('.mod_contenido').html(table);
+         // for (var i = 0; i < loquesea.length; i++) {
+         //   $('.tr_body').append(`<tr><td>${loquesea[i]['a']}</td><td>${loquesea[i]['b']}</td><td>${loquesea[i]['c']}</td><td>${loquesea[i]['d']}</td><td>${loquesea[i]['e']}</td></tr>`);
+         // }
+         console.log("success com_carga_c/cargaArchivos");
        },
-       //si ha ocurrido un error
-       error: function(){
-         console.log("error");
-           // message = $("<span class='error'>Ha ocurrido un error.</span>");
-           // showMessage(message);
+       error: function(data){
+         console.log(data);
+         console.log("error com_carga_c/cargaArchivos");
        }
    });
 
