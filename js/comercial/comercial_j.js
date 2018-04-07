@@ -1,4 +1,4 @@
-console.log("comercial_j ok");
+// console.log("comercial_j ok");
 let global_asd
 $('.modal').modal();
 $('select').material_select();

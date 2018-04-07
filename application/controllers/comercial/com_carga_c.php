@@ -6,16 +6,15 @@ class com_carga_c extends CI_Controller{
   public function __construct(){
     parent::__construct();
     $this->load->library('Excel');
+    $this->load->model('comercial/com_carga_m');
   }
 
   //FUNCTION cargaArchivo
   function cargaArchivo(){
     date_default_timezone_set('Chile/Continental');
     $fecha = date('Y-m-d');
-
     $mi_archivo = 'mi_archivo';
     $archivo_leido = "./uploads/".$fecha.".xlsx";
-
     $config['upload_path'] = "./uploads/";
     $config['file_name'] = $fecha;
     $config['allowed_types'] = "*";
@@ -23,14 +22,12 @@ class com_carga_c extends CI_Controller{
     $config['max_width'] = "2000";
     $config['max_height'] = "2000";
     $this->load->library('upload', $config);
-
     if (!$this->upload->do_upload($mi_archivo)) {
         $data['uploadError'] = $this->upload->display_errors();
         echo $this->upload->display_errors();
         return;
     }else{
       $data['uploadSuccess'] = $this->upload->data();
-
       $inputFileType = PHPExcel_IOFactory::identify($archivo_leido);
       $objReader = PHPExcel_IOFactory::createReader($inputFileType);
       $objPHPExcel = $objReader->load($archivo_leido);
@@ -39,7 +36,6 @@ class com_carga_c extends CI_Controller{
       $highestColumn = $sheet->getHighestColumn();
       $datos = array();
       for ($row = 1; $row <= $highestRow; $row++){
-
         $a = $sheet->getCell('A'.$row)->getValue();
         $b = $sheet->getCell('B'.$row)->getValue();
         $c = $sheet->getCell('C'.$row)->getValue();
@@ -87,14 +83,25 @@ class com_carga_c extends CI_Controller{
         $arreglo = array('a' => $a,	'b' => $b,	'c' => $c,	'd' => $d,	'e' => $e,	'f' => $f,	'g' => $g,	'h' => $h,	'i' => $i,	'j' => $j,	'k' => $k,	'l' => $l,	'm' => $m,	'n' => $n,	'o' => $o,	'p' => $p,	'q' => $q,	'r' => $r,	's' => $s,	't' => $t,	'u' => $u,	'v' => $v,	'w' => $w,	'x' => $x,	'y' => $y,	'z' => $z,	'aa' => $aa,	'ab' => $ab,	'ac' => $ac,	'ad' => $ad,	'ae' => $ae,	'af' => $af,	'ag' => $ag,	'ah' => $ah,	'ai' => $ai,	'aj' => $aj,	'ak' => $ak,	'al' => $al,	'au' => $au,	'av' => $av,	'aw' => $aw,	'ax' => $ax,	'ay' => $ay,	'az' => $az);
         array_push($datos,$arreglo);
       }//FIN FOR
-
       echo json_encode($datos);
-
     }
-
-
-
   }
   //FUNCTION cargaArchivo
+
+  //FUNCTION QUE VALIDA LOS DATOS CONTRA QAD Y HACE INSERT A MYSQL
+  function consultaArticulo(){
+    $valor = $this->input->post('datos_confirmados');
+    $datos = json_decode($valor);
+    $respuesta = $this->com_carga_m->consultaArticulo($datos);
+    echo json_encode($respuesta);
+  }
+  //FUNCTION QUE VALIDA LOS DATOS CONTRA QAD Y HACE INSERT A MYSQL
+
+  function insertaPresupuesto(){
+    $datos = $this->input->post('datos_confirmados');
+    $valor = $this->com_carga_m->insertaPresupuesto($datos);
+    echo json_encode($valor);
+  }
+
 
 }

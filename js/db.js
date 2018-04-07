@@ -466,7 +466,7 @@ $.ajax({
 })
 .done(function(data) {
     data_ = data;
-    console.log(data_);
+    // console.log(data_);
     console.log("success comercial_c/listarPresupuesto");
 })
 .fail(function(data) {

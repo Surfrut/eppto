@@ -247,6 +247,7 @@
   <div class="modal-content ">
     <div class="mod_preloader center">
       <br>
+      <br>
       <div class="preloader-wrapper big active">
       <div class="spinner-layer spinner-blue">
         <div class="circle-clipper left">
@@ -289,9 +290,10 @@
       </div>
     </div>
     <br>
+    <br>
     </div>
+    <h4 class="titulo">Selecciona el archivo del Presupuesto</h4>
     <div class="mod_contenido">
-      <h4>Selecciona el archivo del Presupuesto</h4>
       <form action="#" class="formulario_archivo" enctype="multipart/form-data" name="mi_archivo">
         <div class="file-field input-field">
           <div class="btn color_eppto">
@@ -303,13 +305,22 @@
           </div>
         </div>
       </form>
-      <div class="right">
-        <br>
-        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Cancelar</a>
-        <a href="#!" class="modal-action waves-effect waves-green btn btn_cargarMasivo color_eppto">Cargar</a>
-        <br>
-        <br>
+    </div>
+    <div class="mod_confirmacion">
+      <div class="row">
+        <div class="col s12 m12 l12">
+          <div class="card-panel contenido_confirmacion">
+
+          </div>
+        </div>
       </div>
+    </div>
+    <div class="right footer">
+      <br>
+      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Cancelar</a>
+      <a href="#!" class="modal-action waves-effect waves-green btn btn_cargarMasivo color_eppto">Cargar</a>
+      <br>
+      <br>
     </div>
   </div>
 </div>
