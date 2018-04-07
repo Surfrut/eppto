@@ -25,4 +25,13 @@ class com_carga_m extends CI_Model{
     return $datos;
   }//FIN FUNCTION
 
+  function insertaPresupuesto($datos_confirmados){
+    $datos_confirmados = json_decode($datos_confirmados);
+
+    for ($i=0; $i < count($datos_confirmados); $i++) {
+      
+    }
+
+  }
+
 }

@@ -45,42 +45,80 @@ $("body").on('click', '.btn_cargarMasivo',function(){
 })
 
 $('body').on('click', '.btn_confirmaResumen', function(event) {
+  //CONSULTA ARTICULOS
   $.ajax({
     url: base_url+'comercial/com_carga_c/consultaArticulo',
     type: 'POST',
     dataType: 'json',
     data: {
       datos_confirmados:datos_confirmados
+    },
+    beforeSend: function(){
+      $('.mod_contenido').hide();
+      $('.mod_preloader').show('200');
+      $('.titulo').addClass('center').text("Validando códigos...");
+      $('.footer').hide();
+      $('.contenido_confirmacion').hide();
     }
   })
   .done(function(data) {
     console.log(data);
+    console.log("success com_carga_c/consultaArticulo");
+    swal({
+      title: 'Perfecto!',
+      timer: 400,
+      onOpen: () => {
+        swal.showLoading()
+      }
+    }).then((result) => {
+      if (
+        // Read more about handling dismissals
+        result.dismiss === swal.DismissReason.timer
+      ) {
+        console.log('I was closed by the timer')
+      }
+    })
     if (data.length>0) {
-      alert("carga archivo");
       //AJAX QUE VA HACER LOS INSERT A MYSQL
       $.ajax({
-        url: base_url+,
+        url: base_url+'comercial/com_carga_c/insertaPresupuesto',
         type: 'POST',
         dataType: 'json',
-        data: {datos_confirmados:datos_confirmados}
+        data: {datos_confirmados:datos_confirmados},
+        beforeSend: function(){
+          $('.titulo').text("Ingresando Presupuesto");
+        }
       })
-      .done(function() {
-        console.log("success");
+      .done(function(data) {
+        console.log(data);
+        console.log("success com_carga_c/insertaPresupuesto");
+        swal(
+          'Perfecto!',
+          'Todas las lineas ingresadas.',
+          'success'
+        )
       })
-      .fail(function() {
-        console.log("error");
+      .fail(function(data) {
+        console.log(data);
+        console.log("error com_carga_c/insertaPresupuesto");
       })
       //AJAX QUE VA HACER LOS INSERT A MYSQL
 
     }else{
       alert("Estos códigos no existen. Favor revisar. Se cancelará todo el proceso.");
     }
-    console.log("success com_carga_c/consultaArticulo");
   })
   .fail(function(data) {
     // console.log(data);
     console.log("error com_carga_c/consultaArticulo");
   });
+  //CONSULTA ARTICULOS
+
+  //CONSULTA CLIENTES
+  //CONSULTA CLIENTES
+
+  // CONSULTA SHIP-TO
+  // CONSULTA SHIP-TO
 
 
 });
