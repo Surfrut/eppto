@@ -6,6 +6,15 @@ $('.btn_pptoMasivo').on('click', function(){
 let datos_confirmados
 $("body").on('click', '.btn_cargarMasivo',function(){
  var formData = new FormData($(".formulario_archivo")[0]);
+
+ formData.append('tipo_archivo',$('input:checkbox[name=surfrut]:checked').val());
+
+ // let datos = [];
+ // datos.formData = formData0;
+ // datos.tipo_archivo = tipo_archivo;
+
+ // console.log(formData.getAll('tipo_archivo'));
+
  $.ajax({
        url: base_url+'comercial/com_carga_c/cargaArchivo',
        type: 'POST',
@@ -23,9 +32,9 @@ $("body").on('click', '.btn_cargarMasivo',function(){
          $('.mod_preloader').hide();
          $('.mod_contenido').show();
          let loquesea = JSON.parse(data);
-         datos_confirmados = data;
+         datos_confirmados = loquesea[0];
          let suma = 0
-         for (var i = 1; i < loquesea.length; i++) {
+         for (var i = 1; i < (loquesea.length)-1; i++) {
            suma = suma + parseInt(loquesea[i]['af']);
          }
          $('.mod_contenido').hide();
@@ -46,6 +55,7 @@ $("body").on('click', '.btn_cargarMasivo',function(){
 
 $('body').on('click', '.btn_confirmaResumen', function(event) {
   //CONSULTA ARTICULOS
+  console.log(datos_confirmados);
   $.ajax({
     url: base_url+'comercial/com_carga_c/consultaArticulo',
     type: 'POST',
@@ -64,49 +74,35 @@ $('body').on('click', '.btn_confirmaResumen', function(event) {
   .done(function(data) {
     console.log(data);
     console.log("success com_carga_c/consultaArticulo");
-    swal({
-      title: 'Perfecto!',
-      timer: 400,
-      onOpen: () => {
-        swal.showLoading()
-      }
-    }).then((result) => {
-      if (
-        // Read more about handling dismissals
-        result.dismiss === swal.DismissReason.timer
-      ) {
-        console.log('I was closed by the timer')
-      }
-    })
-    if (data.length>0) {
-      //AJAX QUE VA HACER LOS INSERT A MYSQL
-      $.ajax({
-        url: base_url+'comercial/com_carga_c/insertaPresupuesto',
-        type: 'POST',
-        dataType: 'json',
-        data: {datos_confirmados:datos_confirmados},
-        beforeSend: function(){
-          $('.titulo').text("Ingresando Presupuesto");
-        }
-      })
-      .done(function(data) {
-        console.log(data);
-        console.log("success com_carga_c/insertaPresupuesto");
-        swal(
-          'Perfecto!',
-          'Todas las lineas ingresadas.',
-          'success'
-        )
-      })
-      .fail(function(data) {
-        console.log(data);
-        console.log("error com_carga_c/insertaPresupuesto");
-      })
-      //AJAX QUE VA HACER LOS INSERT A MYSQL
-
-    }else{
-      alert("Estos códigos no existen. Favor revisar. Se cancelará todo el proceso.");
-    }
+    // if (data.length>0) {
+    //   //AJAX QUE VA HACER LOS INSERT A MYSQL
+    //   $.ajax({
+    //     url: base_url+'comercial/com_carga_c/insertaPresupuesto',
+    //     type: 'POST',
+    //     dataType: 'json',
+    //     data: {datos_confirmados:datos_confirmados},
+    //     beforeSend: function(){
+    //       $('.titulo').text("Ingresando Presupuesto");
+    //     }
+    //   })
+    //   .done(function(data) {
+    //     console.log(data);
+    //     console.log("success com_carga_c/insertaPresupuesto");
+    //     swal(
+    //       'Perfecto!',
+    //       'Todas las lineas ingresadas.',
+    //       'success'
+    //     )
+    //   })
+    //   .fail(function(data) {
+    //     console.log(data);
+    //     console.log("error com_carga_c/insertaPresupuesto");
+    //   })
+    //   //AJAX QUE VA HACER LOS INSERT A MYSQL
+    //
+    // }else{
+    //   alert("Estos códigos no existen. Favor revisar. Se cancelará todo el proceso."+data);
+    // }
   })
   .fail(function(data) {
     // console.log(data);

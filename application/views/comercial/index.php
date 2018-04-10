@@ -293,8 +293,25 @@
     <br>
     </div>
     <h4 class="titulo">Selecciona el archivo del Presupuesto</h4>
+    <div class="divider"></div><br>
     <div class="mod_contenido">
       <form action="#" class="formulario_archivo" enctype="multipart/form-data" name="mi_archivo">
+        <div class="tipo_archivo">
+          <p>
+            <input type="checkbox" name="surfrut" id="test5" value="SURFRUT - RETAIL"/>
+            <label for="test5">SURFRUT - RETAIL</label>&nbsp;&nbsp;
+            <input type="checkbox" name="surfrut" id="test6" value="SURFRUT - INGREDIENTES"/>
+            <label for="test6">SURFRUT - INGREDIENTES</label>&nbsp;&nbsp;
+            <input type="checkbox" name="surfrut" id="test7" value="SURFRUT - MARRASCHINO"/>
+            <label for="test7">SURFRUT - MARRASCHINO</label>
+          </p>
+          <p>
+            <input type="checkbox" id="test8" value="PUREFRUIT - DOYPACK"/>
+            <label for="test8">PUREFRUIT - DOYPACK</label>&nbsp;&nbsp;
+            <input type="checkbox" id="test9" value="PUREFRUIT - BULK"/>
+            <label for="test9">PUREFRUIT - BULK</label>
+          </p>
+        </div>
         <div class="file-field input-field">
           <div class="btn color_eppto">
             <span>Archivo</span>

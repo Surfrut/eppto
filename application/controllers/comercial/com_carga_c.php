@@ -11,6 +11,9 @@ class com_carga_c extends CI_Controller{
 
   //FUNCTION cargaArchivo
   function cargaArchivo(){
+
+    $tipo_archivo = $this->input->post('tipo_archivo');
+
     date_default_timezone_set('Chile/Continental');
     $fecha = date('Y-m-d');
     $mi_archivo = 'mi_archivo';
@@ -35,6 +38,7 @@ class com_carga_c extends CI_Controller{
       $highestRow = $sheet->getHighestRow();
       $highestColumn = $sheet->getHighestColumn();
       $datos = array();
+      $datos_categoria = array();
       for ($row = 1; $row <= $highestRow; $row++){
         $a = $sheet->getCell('A'.$row)->getValue();
         $b = $sheet->getCell('B'.$row)->getValue();
@@ -74,25 +78,45 @@ class com_carga_c extends CI_Controller{
         $aj = $sheet->getCell('AJ'.$row)->getValue();
         $ak = $sheet->getCell('AK'.$row)->getValue();
         $al = $sheet->getCell('AL'.$row)->getValue();
+        $am = $sheet->getCell('AM'.$row)->getValue();
+        $an = $sheet->getCell('AN'.$row)->getValue();
+        $ao = $sheet->getCell('AO'.$row)->getValue();
+        $ap = $sheet->getCell('AP'.$row)->getValue();
+        $aq = $sheet->getCell('AQ'.$row)->getValue();
+        $ar = $sheet->getCell('AR'.$row)->getValue();
+        $as = $sheet->getCell('AS'.$row)->getValue();
+        $at = $sheet->getCell('AT'.$row)->getValue();
         $au = $sheet->getCell('AU'.$row)->getValue();
         $av = $sheet->getCell('AV'.$row)->getValue();
         $aw = $sheet->getCell('AW'.$row)->getValue();
         $ax = $sheet->getCell('AX'.$row)->getValue();
         $ay = $sheet->getCell('AY'.$row)->getValue();
-        $az = $sheet->getCell('AZ'.$row)->getValue();
-        $arreglo = array('a' => $a,	'b' => $b,	'c' => $c,	'd' => $d,	'e' => $e,	'f' => $f,	'g' => $g,	'h' => $h,	'i' => $i,	'j' => $j,	'k' => $k,	'l' => $l,	'm' => $m,	'n' => $n,	'o' => $o,	'p' => $p,	'q' => $q,	'r' => $r,	's' => $s,	't' => $t,	'u' => $u,	'v' => $v,	'w' => $w,	'x' => $x,	'y' => $y,	'z' => $z,	'aa' => $aa,	'ab' => $ab,	'ac' => $ac,	'ad' => $ad,	'ae' => $ae,	'af' => $af,	'ag' => $ag,	'ah' => $ah,	'ai' => $ai,	'aj' => $aj,	'ak' => $ak,	'al' => $al,	'au' => $au,	'av' => $av,	'aw' => $aw,	'ax' => $ax,	'ay' => $ay,	'az' => $az);
+        $az = $tipo_archivo;
+        $arreglo = array('a' => $a,	'b' => $b,	'c' => $c,	'd' => $d,	'e' => $e,	'f' => $f,	'g' => $g,	'h' => $h,	'i' => $i,	'j' => $j,	'k' => $k,	'l' => $l,	'm' => $m,	'n' => $n,	'o' => $o,	'p' => $p,	'q' => $q,	'r' => $r,	's' => $s,	't' => $t,	'u' => $u,	'v' => $v,	'w' => $w,	'x' => $x,	'y' => $y,	'z' => $z,	'aa' => $aa,	'ab' => $ab,	'ac' => $ac,	'ad' => $ad,	'ae' => $ae,	'af' => $af,	'ag' => $ag,	'ah' => $ah,	'ai' => $ai,	'aj' => $aj,	'ak' => $ak,	'al' => $al, 'am' => $am, 'an' => $an, 'ao' => $ao, 'ap' => $ap, 'aq' => $aq, 'ar' => $ar, 'as' => $as, 'at' => $at,	'au' => $au,	'av' => $av,	'aw' => $aw,	'ax' => $ax,	'ay' => $ay, 'az' => $az);
         array_push($datos,$arreglo);
       }//FIN FOR
+
+      date_default_timezone_set('Chile/Continental');
+      $valor = new DateTime();
+      $car_hora = $valor->format('Y-m-d H:i:s');
+      $car_fecha = $valor->format('Y-m-d');
+
+      $arreglo_categoria = array('car_categoria' => $tipo_archivo, 'car_hora' => $car_hora, 'car_fecha' => $car_fecha);
+
+      array_push($datos,$arreglo_categoria);
+
+
+
       echo json_encode($datos);
-    }
+    }//FIN ELSE
   }
   //FUNCTION cargaArchivo
 
   //FUNCTION QUE VALIDA LOS DATOS CONTRA QAD Y HACE INSERT A MYSQL
   function consultaArticulo(){
     $valor = $this->input->post('datos_confirmados');
-    $datos = json_decode($valor);
-    $respuesta = $this->com_carga_m->consultaArticulo($datos);
+    // $datos = json_decode($valor);
+    $respuesta = $this->com_carga_m->consultaArticulo($valor);
     echo json_encode($respuesta);
   }
   //FUNCTION QUE VALIDA LOS DATOS CONTRA QAD Y HACE INSERT A MYSQL
