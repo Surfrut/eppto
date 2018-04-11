@@ -122,7 +122,7 @@ class com_carga_c extends CI_Controller{
   //FUNCTION QUE VALIDA LOS DATOS CONTRA QAD Y HACE INSERT A MYSQL
 
   function insertaPresupuesto(){
-    $datos = $this->input->post('datos_confirmados');
+    $datos = $this->input->post('datos_insertar');
     $valor = $this->com_carga_m->insertaPresupuesto($datos);
     echo json_encode($valor);
   }
