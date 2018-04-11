@@ -56,6 +56,7 @@
    </a>
    <ul>
      <li><a class="btn-floating blue btn_descargar"><i class="material-icons">cloud_download</i></a></li>
+     <li><a class="btn-floating blue btn_pptoMasivo"><i class="material-icons">add_box</i></a></li>
      <li><a class="btn-floating blue btn_nuevoPresupuesto"><i class="material-icons">add</i></a></li>
    </ul>
  </div>
@@ -241,6 +242,107 @@
 
 <!-- ESTRUCTURA DEL MODAL AGREGAR PRESUPUESTO  -->
 
+<!-- ESTRUCTURA MODAL CARGA MASIVA -->
+<div id="modal1" class="modal modal_cargaMasiva">
+  <div class="modal-content ">
+    <div class="mod_preloader center">
+      <br>
+      <br>
+      <div class="preloader-wrapper big active">
+      <div class="spinner-layer spinner-blue">
+        <div class="circle-clipper left">
+          <div class="circle"></div>
+        </div><div class="gap-patch">
+          <div class="circle"></div>
+        </div><div class="circle-clipper right">
+          <div class="circle"></div>
+        </div>
+      </div>
+
+      <div class="spinner-layer spinner-red">
+        <div class="circle-clipper left">
+          <div class="circle"></div>
+        </div><div class="gap-patch">
+          <div class="circle"></div>
+        </div><div class="circle-clipper right">
+          <div class="circle"></div>
+        </div>
+      </div>
+
+      <div class="spinner-layer spinner-yellow">
+        <div class="circle-clipper left">
+          <div class="circle"></div>
+        </div><div class="gap-patch">
+          <div class="circle"></div>
+        </div><div class="circle-clipper right">
+          <div class="circle"></div>
+        </div>
+      </div>
+
+      <div class="spinner-layer spinner-green">
+        <div class="circle-clipper left">
+          <div class="circle"></div>
+        </div><div class="gap-patch">
+          <div class="circle"></div>
+        </div><div class="circle-clipper right">
+          <div class="circle"></div>
+        </div>
+      </div>
+    </div>
+    <br>
+    <br>
+    </div>
+    <h4 class="titulo">Selecciona el archivo del Presupuesto</h4>
+    <div class="divider"></div><br>
+    <div class="mod_contenido">
+      <form action="#" class="formulario_archivo" enctype="multipart/form-data" name="mi_archivo">
+        <div class="tipo_archivo">
+          <p>
+            <input type="checkbox" name="surfrut" id="test5" value="SURFRUT - RETAIL"/>
+            <label for="test5">SURFRUT - RETAIL</label>&nbsp;&nbsp;
+            <input type="checkbox" name="surfrut" id="test6" value="SURFRUT - INGREDIENTES"/>
+            <label for="test6">SURFRUT - INGREDIENTES</label>&nbsp;&nbsp;
+            <input type="checkbox" name="surfrut" id="test7" value="SURFRUT - MARRASCHINO"/>
+            <label for="test7">SURFRUT - MARRASCHINO</label>
+          </p>
+          <p>
+            <input type="checkbox" id="test8" value="PUREFRUIT - DOYPACK"/>
+            <label for="test8">PUREFRUIT - DOYPACK</label>&nbsp;&nbsp;
+            <input type="checkbox" id="test9" value="PUREFRUIT - BULK"/>
+            <label for="test9">PUREFRUIT - BULK</label>
+          </p>
+        </div>
+        <div class="file-field input-field">
+          <div class="btn color_eppto">
+            <span>Archivo</span>
+            <input type="file" name="mi_archivo" class="nombreArchivo">
+          </div>
+          <div class="file-path-wrapper ">
+            <input class="file-path validate txt_archivo" type="text" value="">
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="mod_confirmacion">
+      <div class="row">
+        <div class="col s12 m12 l12">
+          <div class="card-panel contenido_confirmacion">
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="right footer">
+      <br>
+      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Cancelar</a>
+      <a href="#!" class="modal-action waves-effect waves-green btn btn_cargarMasivo color_eppto">Cargar</a>
+      <br>
+      <br>
+    </div>
+  </div>
+</div>
+<!-- ESTRUCTURA MODAL CARGA MASIVA -->
+
 
     <!--Import jQuery before materialize.js-->
     <script type="text/javascript" src="<?php base_url() ?>js/jquery-3.1.1.js"></script>
@@ -249,6 +351,7 @@
     <script type="text/javascript" src="<?php base_url() ?>js/jsgrid.min.js"></script>
     <script type="text/javascript" src="<?php base_url() ?>js/db.js"></script>
     <script type="text/javascript" src="<?php base_url() ?>js/comercial/comercial_j.js"></script>
+    <script type="text/javascript" src="<?php base_url() ?>js/comercial/com_carga_j.js"></script>
 
   </body>
 </html>
