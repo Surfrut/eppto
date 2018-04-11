@@ -9,6 +9,9 @@ $("body").on('click', '.btn_cargarMasivo',function(){
 
  formData.append('tipo_archivo',$('input:checkbox[name=surfrut]:checked').val());
 
+ let nombreArchivo = $('.nombreArchivo').val();
+ formData.append('nombreArchivo', nombreArchivo);
+
  $.ajax({
        url: base_url+'comercial/com_carga_c/cargaArchivo',
        type: 'POST',

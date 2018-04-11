@@ -315,7 +315,7 @@
         <div class="file-field input-field">
           <div class="btn color_eppto">
             <span>Archivo</span>
-            <input type="file" name="mi_archivo">
+            <input type="file" name="mi_archivo" class="nombreArchivo">
           </div>
           <div class="file-path-wrapper ">
             <input class="file-path validate txt_archivo" type="text" value="">
