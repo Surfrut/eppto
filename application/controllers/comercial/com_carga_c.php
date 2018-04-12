@@ -13,13 +13,17 @@ class com_carga_c extends CI_Controller{
   function cargaArchivo(){
 
     $tipo_archivo = $this->input->post('tipo_archivo');
+    $nombreArchivo = $this->input->post('nombreArchivo');
+    $nombreArchivo = explode("\\",$nombreArchivo);
+    $nombreArchivo = $nombreArchivo[(count($nombreArchivo)-1)];
+    // var_dump($nombreArchivo);
 
     date_default_timezone_set('Chile/Continental');
     $fecha = date('Y-m-d');
     $mi_archivo = 'mi_archivo';
-    $archivo_leido = "./uploads/".$fecha.".xlsx";
+    $archivo_leido = "./uploads/".$nombreArchivo;
     $config['upload_path'] = "./uploads/";
-    $config['file_name'] = $fecha;
+    $config['file_name'] = $nombreArchivo;
     $config['allowed_types'] = "*";
     $config['max_size'] = "50000";
     $config['max_width'] = "2000";
@@ -105,6 +109,7 @@ class com_carga_c extends CI_Controller{
 
       array_push($datos,$arreglo_categoria);
 
+      unlink($archivo_leido);
 
 
       echo json_encode($datos);

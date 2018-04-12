@@ -244,53 +244,53 @@
 
 <!-- ESTRUCTURA MODAL CARGA MASIVA -->
 <div id="modal1" class="modal modal_cargaMasiva">
-  <div class="modal-content ">
+  <div class="modal-content modal_contenido">
     <div class="mod_preloader center">
+        <br>
+        <br>
+        <div class="preloader-wrapper big active">
+        <div class="spinner-layer spinner-blue">
+          <div class="circle-clipper left">
+            <div class="circle"></div>
+          </div><div class="gap-patch">
+            <div class="circle"></div>
+          </div><div class="circle-clipper right">
+            <div class="circle"></div>
+          </div>
+        </div>
+
+        <div class="spinner-layer spinner-red">
+          <div class="circle-clipper left">
+            <div class="circle"></div>
+          </div><div class="gap-patch">
+            <div class="circle"></div>
+          </div><div class="circle-clipper right">
+            <div class="circle"></div>
+          </div>
+        </div>
+
+        <div class="spinner-layer spinner-yellow">
+          <div class="circle-clipper left">
+            <div class="circle"></div>
+          </div><div class="gap-patch">
+            <div class="circle"></div>
+          </div><div class="circle-clipper right">
+            <div class="circle"></div>
+          </div>
+        </div>
+
+        <div class="spinner-layer spinner-green">
+          <div class="circle-clipper left">
+            <div class="circle"></div>
+          </div><div class="gap-patch">
+            <div class="circle"></div>
+          </div><div class="circle-clipper right">
+            <div class="circle"></div>
+          </div>
+        </div>
+      </div>
       <br>
       <br>
-      <div class="preloader-wrapper big active">
-      <div class="spinner-layer spinner-blue">
-        <div class="circle-clipper left">
-          <div class="circle"></div>
-        </div><div class="gap-patch">
-          <div class="circle"></div>
-        </div><div class="circle-clipper right">
-          <div class="circle"></div>
-        </div>
-      </div>
-
-      <div class="spinner-layer spinner-red">
-        <div class="circle-clipper left">
-          <div class="circle"></div>
-        </div><div class="gap-patch">
-          <div class="circle"></div>
-        </div><div class="circle-clipper right">
-          <div class="circle"></div>
-        </div>
-      </div>
-
-      <div class="spinner-layer spinner-yellow">
-        <div class="circle-clipper left">
-          <div class="circle"></div>
-        </div><div class="gap-patch">
-          <div class="circle"></div>
-        </div><div class="circle-clipper right">
-          <div class="circle"></div>
-        </div>
-      </div>
-
-      <div class="spinner-layer spinner-green">
-        <div class="circle-clipper left">
-          <div class="circle"></div>
-        </div><div class="gap-patch">
-          <div class="circle"></div>
-        </div><div class="circle-clipper right">
-          <div class="circle"></div>
-        </div>
-      </div>
-    </div>
-    <br>
-    <br>
     </div>
     <h4 class="titulo">Selecciona el archivo del Presupuesto</h4>
     <div class="divider"></div><br>
@@ -342,6 +342,21 @@
   </div>
 </div>
 <!-- ESTRUCTURA MODAL CARGA MASIVA -->
+
+<!-- ESTRUCTURA MODAL CARGA ARCHIVO -->
+<div id="modal5" class="modal mod_errorCarga">
+  <div class="modal-content ">
+    <h4 class="center">Se canceló la carga del Presupuesto</h4>
+    <p class="center">Favor revisar estos códigos ya que no existen en QAD e intentar nuevamente</p>
+    <div class="collection mod_error">
+    </div>
+    <div class="right">
+      <button type="button" class="btn modal-close"><i class="material-icons right"></i>Aceptar</button>
+      <br><br>
+    </div>
+  </div>
+</div>
+<!-- ESTRUCTURA MODAL CARGA ARCHIVO -->
 
 
     <!--Import jQuery before materialize.js-->

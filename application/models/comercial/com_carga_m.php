@@ -9,7 +9,7 @@ class com_carga_m extends CI_Model{
 
   function consultaArticulo($articulo){
     $qad = $this->load->database('qad', TRUE);
-
+    $articulo = json_decode($articulo, true);
     $tipo_archivo = array_pop($articulo);
 
     for ($i=1; $i < count($articulo); $i++) {
