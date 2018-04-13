@@ -18,6 +18,11 @@ class Comercial_c extends CI_Controller{
     echo json_encode($valor);
   }
 
+  function listarPresupuestoPRO(){
+    $valor = $this->comercial_m->listarPresupuestoPRO();
+    echo json_encode($valor);
+  }
+
   function listarClientes(){
     $valor = $this->comercial_m->listarClientes();
     echo json_encode($valor);
@@ -37,9 +42,7 @@ class Comercial_c extends CI_Controller{
 
   function actualizarPresupuesto(){
     $datos = $this->input->post('datos');
-
     $datos2 = json_decode($datos);
-
     $valor = $this->comercial_m->actualizarPresupuesto($datos2);
     echo json_encode($valor);
   }

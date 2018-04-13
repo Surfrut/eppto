@@ -64,17 +64,29 @@ $("#jsGrid").jsGrid({
         { name: "pre_descripcion_s", title: "Descripción", type: "text", width: 200, editing: false },
         { name: "pre_canal", title: "Canal", type: "text", width: 200, editing: false },
         { name: "pre_cant1", title: "Ene 2018", type: "number", width: 200, editing: false, css: 'pre_cant1' },
+        { name: "pre_desp1", title: "Desp. Ene 2018", type: "number", width: 200, editing: false, css: 'pre_cant1', editing: false },
         { name: "pre_cant2", title: "Feb 2018", type: "number", width: 200, editing: false, css: 'pre_cant2' },
+        { name: "pre_desp2", title: "Desp. Feb 2018", type: "number", width: 200, editing: false, css: 'pre_cant2', editing: false },
         { name: "pre_cant3", title: "Mar 2018", type: "number", width: 200, editing: false, css: 'pre_cant3' },
+        { name: "pre_desp3", title: "Desp. Mar 2018", type: "number", width: 200, editing: false, css: 'pre_cant3', editing: false },
         { name: "pre_cant4", title: "Abr 2018", type: "number", width: 200, css: 'pre_cant4' },
+        { name: "pre_desp4", title: "Desp. Abr 2018", type: "number", width: 200, css: 'pre_cant4', editing: false },
         { name: "pre_cant5", title: "May 2018", type: "number", width: 200, css: 'pre_cant5' },
+        { name: "pre_desp5", title: "Desp. May 2018", type: "number", width: 200, css: 'pre_cant5', editing: false },
         { name: "pre_cant6", title: "Jun 2018", type: "number", width: 200, css: 'pre_cant6' },
+        { name: "pre_desp6", title: "Desp. Jun 2018", type: "number", width: 200, css: 'pre_cant6', editing: false },
         { name: "pre_cant7", title: "Jul 2018", type: "number", width: 200, css: 'pre_cant7' },
+        { name: "pre_desp7", title: "Desp. Jul 2018", type: "number", width: 200, css: 'pre_cant7', editing: false },
         { name: "pre_cant8", title: "Ago 2018", type: "number", width: 200, css: 'pre_cant8' },
+        { name: "pre_desp8", title: "Desp. Ago 2018", type: "number", width: 200, css: 'pre_cant8', editing: false },
         { name: "pre_cant9", title: "Sep 2018", type: "number", width: 200, css: 'pre_cant9' },
+        { name: "pre_desp9", title: "Desp. Sep 2018", type: "number", width: 200, css: 'pre_cant9', editing: false },
         { name: "pre_cant10", title: "Oct 2018", type: "number", width: 200, css: 'pre_cant10' },
+        { name: "pre_desp10", title: "Desp. Oct 2018", type: "number", width: 200, css: 'pre_cant10', editing: false },
         { name: "pre_cant11", title: "Nov 2018", type: "number", width: 200, css: 'pre_cant11' },
+        { name: "pre_desp11", title: "Desp. Nov 2018", type: "number", width: 200, css: 'pre_cant11', editing: false },
         { name: "pre_cant12", title: "Dic 2018", type: "number", width: 200, css: 'pre_cant12' },
+        { name: "pre_desp12", title: "Desp. Dic 2018", type: "number", width: 200, css: 'pre_cant12', editing: false },
         { name: "pre_cant13", title: "Ene 2019", type: "number", width: 200, css: 'pre_cant13' },
         { name: "pre_cant14", title: "Feb 2019", type: "number", width: 200, css: 'pre_cant14' },
         { name: "pre_cant15", title: "Mar 2019", type: "number", width: 200, css: 'pre_cant15'
@@ -254,7 +266,6 @@ if (valida) {
 //BTN PARA AGREGAR PRESUPUESTO MANUAL
 
 $('.btn_descargar').on('click', function(){
-  console.log("si");
 
   window.location.href = base_url+'comercial/comercial_c/descargarPresupuesto';
 

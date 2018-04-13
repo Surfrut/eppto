@@ -442,8 +442,6 @@ $.ajax({
   console.log("error comercial/actualizarPresupuesto");
   console.log(data);
 })
-
-
 },
 
 deleteItem: function(deletinganalisis) {

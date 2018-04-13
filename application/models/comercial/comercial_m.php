@@ -24,17 +24,29 @@ class comercial_m extends CI_Model{
     pre_descripcion_s,
     pre_canal,
     pre_cant1,
+    pre_desp1,
     pre_cant2,
+    pre_desp2,
     pre_cant3,
+    pre_desp3,
     pre_cant4,
+    pre_desp4,
     pre_cant5,
+    pre_desp5,
     pre_cant6,
+    pre_desp6,
     pre_cant7,
+    pre_desp7,
     pre_cant8,
+    pre_desp8,
     pre_cant9,
+    pre_desp9,
     pre_cant10,
+    pre_desp10,
     pre_cant11,
+    pre_desp11,
     pre_cant12,
+    pre_desp12,
     pre_cant13,
     pre_cant14,
     pre_cant15,
@@ -66,6 +78,12 @@ class comercial_m extends CI_Model{
     $this->db->from('presupuesto');
     // $this->db->order_by('Referencia', 'asc');
     return $this->db->get()->result_array();
+  }
+
+  function listarPresupuestoPRO(){
+    $query = "select distinct max(car_fecha),car_categoria from carga group by";
+    $valor = $this->db->query($query)->result_array();
+    echo $valor;
   }
 
   function listarClientes(){
