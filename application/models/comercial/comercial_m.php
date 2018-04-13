@@ -142,22 +142,40 @@ class comercial_m extends CI_Model{
     pre_descripcion_c,
     pre_ship,
     pre_descripcion_s,
+    pre_pais,
+    pre_mercado,
+    pre_fecha,
+    pre_definitivo,
+    pre_promedio,
+    pre_entidad,
     pre_canal,
     pre_cant1,
+    pre_desp1,
     pre_cant2,
+    pre_desp2,
     pre_cant3,
+    pre_desp3,
     pre_cant4,
+    pre_desp4,
     pre_cant5,
+    pre_desp5,
     pre_cant6,
+    pre_desp6,
     pre_cant7,
+    pre_desp7,
     pre_cant8,
+    pre_desp9,
     pre_cant9,
     pre_cant10,
+    pre_desp10,
     pre_cant11,
+    pre_desp11,
     pre_cant12,
+    pre_desp12,
     pre_cant13,
     pre_cant14,
     pre_cant15,
+    pre_totalppto1,
     pre_total_anual,
     pre_total_desp
     ');
@@ -168,7 +186,7 @@ class comercial_m extends CI_Model{
     $valor = new DateTime();
     $fecha = $valor->format('Y-m-d H:i:s');
 
-    $archivo = 'EPresupuesto '.$fecha.'.csv';
+    $archivo = 'EPPTO '.$fecha.'.csv';
 
     header("Content-type: text/csv");
     header("Content-Disposition: attachment; filename=".$archivo);
@@ -187,22 +205,41 @@ class comercial_m extends CI_Model{
     fwrite($fp, 'DESCRIPCION'.';');
     fwrite($fp, 'SHIPTO'.';');
     fwrite($fp, 'DESCRIPCION'.';');
+    fwrite($fp, 'Pais'.';');
+    fwrite($fp, 'Mercado'.';');
+    fwrite($fp, 'Fecha'.';');
+    fwrite($fp, 'Definitivo'.';');
+    fwrite($fp, 'Promedio'.';');
+    fwrite($fp, 'Entidad'.';');
     fwrite($fp, 'CANAL'.';');
     fwrite($fp, 'Ene 2018'.';');
+    fwrite($fp, 'Desp. Ene 2018'.';');
     fwrite($fp, 'Feb 2018'.';');
+    fwrite($fp, 'Desp. Feb 2018'.';');
     fwrite($fp, 'Mar 2018'.';');
+    fwrite($fp, 'Desp. Mar 2018'.';');
     fwrite($fp, 'Abr 2018'.';');
+    fwrite($fp, 'Desp. Abr 2018'.';');
     fwrite($fp, 'May 2018'.';');
+    fwrite($fp, 'Desp. May 2018'.';');
     fwrite($fp, 'Jun 2018'.';');
+    fwrite($fp, 'Desp. Jun 2018'.';');
     fwrite($fp, 'Jul 2018'.';');
+    fwrite($fp, 'Desp. Jul 2018'.';');
     fwrite($fp, 'Ago 2018'.';');
+    fwrite($fp, 'Desp. Ago 2018'.';');
     fwrite($fp, 'Sep 2018'.';');
+    fwrite($fp, 'Desp. Sep 2018'.';');
     fwrite($fp, 'Oct 2018'.';');
+    fwrite($fp, 'Desp. Oct 2018'.';');
     fwrite($fp, 'Nov 2018'.';');
+    fwrite($fp, 'Desp. Nov 2018'.';');
     fwrite($fp, 'Dic 2018'.';');
+    fwrite($fp, 'Desp. Dic 2018'.';');
     fwrite($fp, 'Ene 2019'.';');
     fwrite($fp, 'Feb 2019'.';');
     fwrite($fp, 'Mar 2019'.';');
+    fwrite($fp, 'Totalppto1'.';');
     fwrite($fp, 'Total Anual'.';');
     fwrite($fp, 'Total Despachado'."\n");
 
