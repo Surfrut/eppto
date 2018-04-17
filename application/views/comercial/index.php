@@ -40,6 +40,8 @@
           </div></li>
           <div class="divider"></div>
           <li><a class="waves-effect btn_iniciarsesion" href="#">Ingresar a EPPTO</a></li>
+          <li><a class="btn-floating blue btn_tst"><i class="material-icons">cancel</i></a></li>
+
         </ul>
       </div>
     </nav>
@@ -306,9 +308,9 @@
             <label for="test7">SURFRUT - MARRASCHINO</label>
           </p>
           <p>
-            <input type="checkbox" id="test8" value="PUREFRUIT - DOYPACK"/>
+            <input type="checkbox" name="surfrut" id="test8" value="PUREFRUIT - DOYPACK"/>
             <label for="test8">PUREFRUIT - DOYPACK</label>&nbsp;&nbsp;
-            <input type="checkbox" id="test9" value="PUREFRUIT - BULK"/>
+            <input type="checkbox" name="surfrut" id="test9" value="PUREFRUIT - BULK"/>
             <label for="test9">PUREFRUIT - BULK</label>
           </p>
         </div>

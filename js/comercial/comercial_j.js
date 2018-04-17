@@ -269,5 +269,17 @@ $('.btn_descargar').on('click', function(){
 
   window.location.href = base_url+'comercial/comercial_c/descargarPresupuesto';
 
+});
+
+$('.btn_tst').on('click', function(){
+
+  // window.location.href = base_url+'comercial/comercial_c/descargarROCIO';
+  // swal("NO TOQUE");
+
+});
+
+$('.btn_tst').on('click', function(){
+
+  window.location.href = base_url+'comercial/comercial_c/descargarROCIO';
 
 });

@@ -13,6 +13,7 @@ class com_carga_c extends CI_Controller{
   function cargaArchivo(){
 
     $tipo_archivo = $this->input->post('tipo_archivo');
+    // echo $tipo_archivo;
     $nombreArchivo = $this->input->post('nombreArchivo');
     $nombreArchivo = explode("\\",$nombreArchivo);
     $nombreArchivo = $nombreArchivo[(count($nombreArchivo)-1)];

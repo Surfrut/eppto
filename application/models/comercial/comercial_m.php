@@ -3,8 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class comercial_m extends CI_Model{
 
-  public function __construct()
-  {
+  public function __construct(){
     parent::__construct();
   }
 
@@ -74,16 +73,21 @@ class comercial_m extends CI_Model{
   	pre_total_anual,
   	pre_total_desp
       ');
-    // $this->db->order_by('an_id', 'desc'); //
     $this->db->from('presupuesto');
-    // $this->db->order_by('Referencia', 'asc');
     return $this->db->get()->result_array();
   }
 
   function listarPresupuestoPRO(){
-    $query = "select distinct max(car_fecha),car_categoria from carga group by";
+    $query = "select distinct max(car_fecha) as fecha,car_categoria from carga group by car_categoria";
     $valor = $this->db->query($query)->result_array();
-    echo $valor;
+    $consultas = array();
+    for ($i=0; $i < count($valor); $i++) {
+      $query = "select * from presupuesto where pre_fecha = '".$valor[$i]['fecha']."' and pre_categoria = '".$valor[$i]['car_categoria']."' UNION ALL";
+      var_dump($query);
+      $arreglo = array('query' =>  $query);
+      array_push($consultas,$arreglo);
+    }
+    return $consultas;
   }
 
   function listarClientes(){
@@ -120,6 +124,11 @@ class comercial_m extends CI_Model{
     return $this->db->insert('presupuesto');
   }
 
+  function ingresaPresupuestoTST($datos){
+    $this->db->set($datos);
+    return $this->db->insert('presupuesto');
+  }
+
   function actualizarPresupuesto($datos){
     var_dump($datos);
     $this->db->set($datos);
@@ -132,23 +141,25 @@ class comercial_m extends CI_Model{
     $this->db->select('
     pre_id,
     pre_dominio,
-    pre_ano,
-    pre_articulo,
-    pre_descripcion_a,
-    pre_familia,
-    pre_clase,
-    pre_variedad,
-    pre_cliente,
-    pre_descripcion_c,
-    pre_ship,
-    pre_descripcion_s,
-    pre_pais,
-    pre_mercado,
+    pre_idpre,
+    pre_descripcion_id,
     pre_fecha,
     pre_definitivo,
+    pre_cliente,
+    pre_descripcion_c,
+    pre_pais,
+    pre_mercado,
+    pre_ship,
+    pre_descripcion_s,
+    pre_articulo,
+    pre_descripcion_a,
+    pre_um,
+    pre_canal,
+    pre_familia,
+    pre_clase,
+    pre_ano,
     pre_promedio,
     pre_entidad,
-    pre_canal,
     pre_cant1,
     pre_desp1,
     pre_cant2,
@@ -164,8 +175,9 @@ class comercial_m extends CI_Model{
     pre_cant7,
     pre_desp7,
     pre_cant8,
-    pre_desp9,
+    pre_desp8,
     pre_cant9,
+    pre_desp9,
     pre_cant10,
     pre_desp10,
     pre_cant11,
@@ -195,23 +207,25 @@ class comercial_m extends CI_Model{
 
     fwrite($fp, '#'.';');
     fwrite($fp, 'DOMINIO'.';');
-    fwrite($fp, 'AÑO'.';');
-    fwrite($fp, 'ARTICULO'.';');
-    fwrite($fp, 'DESCRIPCION'.';');
-    fwrite($fp, 'FAMILIA'.';');
-    fwrite($fp, 'CLASE'.';');
-    fwrite($fp, 'VARIEDAD'.';');
+    fwrite($fp, 'ID PPTO'.';');
+    fwrite($fp, 'DESC. PPTO'.';');
+    fwrite($fp, 'Fecha'.';');
+    fwrite($fp, 'Definitivo'.';');
     fwrite($fp, 'CLIENTE'.';');
-    fwrite($fp, 'DESCRIPCION'.';');
-    fwrite($fp, 'SHIPTO'.';');
     fwrite($fp, 'DESCRIPCION'.';');
     fwrite($fp, 'Pais'.';');
     fwrite($fp, 'Mercado'.';');
-    fwrite($fp, 'Fecha'.';');
-    fwrite($fp, 'Definitivo'.';');
+    fwrite($fp, 'EMBARCAR-A'.';');
+    fwrite($fp, 'DESCRIPCION'.';');
+    fwrite($fp, 'ARTICULO'.';');
+    fwrite($fp, 'DESCRIPCION'.';');
+    fwrite($fp, 'UM'.';');
+    fwrite($fp, 'CANAL'.';');
+    fwrite($fp, 'FAMILIA'.';');
+    fwrite($fp, 'CLASE'.';');
+    fwrite($fp, 'ANO'.';');
     fwrite($fp, 'Promedio'.';');
     fwrite($fp, 'Entidad'.';');
-    fwrite($fp, 'CANAL'.';');
     fwrite($fp, 'Ene 2018'.';');
     fwrite($fp, 'Desp. Ene 2018'.';');
     fwrite($fp, 'Feb 2018'.';');
@@ -250,5 +264,130 @@ class comercial_m extends CI_Model{
     exit;
 
   }
+
+  function descargarROCIO(){
+    $this->db->select('
+    pre_dominio,
+    pre_idpre,
+    pre_descripcion_id,
+    pre_fecha,
+    pre_definitivo,
+    pre_cliente,
+    pre_descripcion_c,
+    pre_pais,
+    pre_mercado,
+    pre_ship,
+    pre_descripcion_s,
+    pre_articulo,
+    pre_descripcion_a,
+    pre_um,
+    pre_canal,
+    pre_familia,
+    pre_clase,
+    pre_cant1,
+    pre_cant2,
+    pre_cant3,
+    pre_cant4,
+    pre_cant5,
+    pre_cant6,
+    pre_cant7,
+    pre_cant8,
+    pre_cant9,
+    pre_cant10,
+    pre_cant11,
+    pre_cant12,
+    pre_totalppto1,
+    pre_cant13,
+    pre_cant14,
+    pre_cant15,
+    pre_cant16,
+    pre_cant17,
+    pre_cant18,
+    pre_cant19,
+    pre_cant20,
+    pre_cant21,
+    pre_cant22,
+    pre_cant23,
+    pre_cant24,
+    pre_totalppto2,
+    pre_promedio,
+    pre_totalum,
+    pre_totalkilos,
+    pre_totalvalor,
+    pre_gastocomercial
+    ');
+    $this->db->from('presupuesto');
+    $presupuesto = $this->db->get()->result_array();
+
+    date_default_timezone_set('Chile/Continental');
+    $valor = new DateTime();
+    $fecha = $valor->format('Y-m-d H:i:s');
+
+    $archivo = 'EPPTO '.$fecha.'.csv';
+
+    header("Content-type: text/csv");
+    header("Content-Disposition: attachment; filename=".$archivo);
+
+    $fp = fopen("php://output", 'w');
+
+    fwrite($fp, 'DOMINIO'.';');
+    fwrite($fp, 'ID PPTO'.';');
+    fwrite($fp, 'DESC. PPTO'.';');
+    fwrite($fp, 'Fecha'.';');
+    fwrite($fp, 'Definitivo'.';');
+    fwrite($fp, 'CLIENTE'.';');
+    fwrite($fp, 'DESCRIPCION'.';');
+    fwrite($fp, 'Pais'.';');
+    fwrite($fp, 'Mercado'.';');
+    fwrite($fp, 'EMBARCAR-A'.';');
+    fwrite($fp, 'DESCRIPCION'.';');
+    fwrite($fp, 'ARTICULO'.';');
+    fwrite($fp, 'DESCRIPCION'.';');
+    fwrite($fp, 'UM'.';');
+    fwrite($fp, 'CANAL'.';');
+    fwrite($fp, 'FAMILIA'.';');
+    fwrite($fp, 'CLASE'.';');
+    fwrite($fp, 'Ene 2018'.';');
+    fwrite($fp, 'Feb 2018'.';');
+    fwrite($fp, 'Mar 2018'.';');
+    fwrite($fp, 'Abr 2018'.';');
+    fwrite($fp, 'May 2018'.';');
+    fwrite($fp, 'Jun 2018'.';');
+    fwrite($fp, 'Jul 2018'.';');
+    fwrite($fp, 'Ago 2018'.';');
+    fwrite($fp, 'Sep 2018'.';');
+    fwrite($fp, 'Oct 2018'.';');
+    fwrite($fp, 'Nov 2018'.';');
+    fwrite($fp, 'Dic 2018'.';');
+    fwrite($fp, 'Totalppto1'.';');
+    fwrite($fp, 'Ene 2019'.';');
+    fwrite($fp, 'Feb 2019'.';');
+    fwrite($fp, 'Mar 2019'.';');
+    fwrite($fp, 'Abr 2019'.';');
+    fwrite($fp, 'May 2019'.';');
+    fwrite($fp, 'Jun 2019'.';');
+    fwrite($fp, 'Jul 2019'.';');
+    fwrite($fp, 'Ago 2019'.';');
+    fwrite($fp, 'Sep 2019'.';');
+    fwrite($fp, 'Oct 2019'.';');
+    fwrite($fp, 'Nov 2019'.';');
+    fwrite($fp, 'Dic 2019'.';');
+    fwrite($fp, 'Totalppto2'.';');
+    fwrite($fp, 'Promedio'.';');
+    fwrite($fp, 'Total UM'.';');
+    fwrite($fp, 'Total Kilos'.';');
+    fwrite($fp, 'Gastros Comerciales'.';');
+    fwrite($fp, 'Mon GC'."\n");
+
+    foreach ($presupuesto as $row) {
+      fputcsv($fp, $row, ";");
+    }
+    fclose($fp);
+    exit;
+
+  }
+
+
+
 
 }

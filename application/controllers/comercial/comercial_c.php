@@ -20,7 +20,8 @@ class Comercial_c extends CI_Controller{
 
   function listarPresupuestoPRO(){
     $valor = $this->comercial_m->listarPresupuestoPRO();
-    echo json_encode($valor);
+    // echo json_encode($valor);
+    // print_r(json_encode($valor));
   }
 
   function listarClientes(){
@@ -40,6 +41,13 @@ class Comercial_c extends CI_Controller{
     // echo json_encode($valor);
   }
 
+  function ingresaPresupuestoTST(){
+    $datos = $this->input->post('data');
+    $datos2 = json_decode($datos);
+    $valor = $this->comercial_m->ingresaPresupuestoTST($datos2);
+    // echo json_encode($valor);
+  }
+
   function actualizarPresupuesto(){
     $datos = $this->input->post('datos');
     $datos2 = json_decode($datos);
@@ -49,6 +57,10 @@ class Comercial_c extends CI_Controller{
 
   function descargarPresupuesto(){
     $valor = $this->comercial_m->descargarPresupuesto();
+  }
+
+  function descargarROCIO(){
+    $valor = $this->comercial_m->descargarROCIO();
   }
 
 

@@ -3,11 +3,14 @@ $('.mod_confirmacion').hide();
 $('.btn_pptoMasivo').on('click', function(){
   $('.modal_cargaMasiva').modal('open');
 });
+
+//CARGA ARCHIVO PARA LECTURA
 let datos_confirmados
 $("body").on('click', '.btn_cargarMasivo',function(){
  var formData = new FormData($(".formulario_archivo")[0]);
  formData.append('tipo_archivo',$('input:checkbox[name=surfrut]:checked').val());
  let nombreArchivo = $('.nombreArchivo').val();
+ console.log($('input:checkbox[name=surfrut]:checked').val());
  formData.append('nombreArchivo', nombreArchivo);
  $.ajax({
        url: base_url+'comercial/com_carga_c/cargaArchivo',
@@ -48,10 +51,10 @@ $("body").on('click', '.btn_cargarMasivo',function(){
        }
    });
 })
+//CARGA ARCHIVO PARA LECTURA
 
 $('body').on('click', '.btn_confirmaResumen', function(event) {
   //CONSULTA ARTICULOS
-
   $.ajax({
     url: base_url+'comercial/com_carga_c/consultaArticulo',
     type: 'POST',
@@ -312,12 +315,8 @@ $('body').on('click', '.btn_confirmaResumen', function(event) {
     console.log("error com_carga_c/consultaArticulo");
   });
   //CONSULTA ARTICULOS
-
   //CONSULTA CLIENTES
   //CONSULTA CLIENTES
-
   // CONSULTA SHIP-TO
   // CONSULTA SHIP-TO
-
-
 });
