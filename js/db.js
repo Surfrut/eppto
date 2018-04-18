@@ -457,7 +457,8 @@ deleteItem: function(deletinganalisis) {
 window.db = db;
 
 $.ajax({
-    url: base_url+'comercial/comercial_c/listarPresupuesto',
+  url: base_url+'comercial/comercial_c/listarPresupuestoPRO',
+    // url: base_url+'comercial/comercial_c/listarPresupuesto',
     type: 'POST',
     dataType: 'json',
     async:false
@@ -465,12 +466,14 @@ $.ajax({
 .done(function(data) {
     data_ = data;
     // console.log(data_);
-    console.log("success comercial_c/listarPresupuesto");
+    console.log("success comercial_c/listarPresupuestoPRO");
+    // console.log("success comercial_c/listarPresupuesto");
 })
 .fail(function(data) {
     data_ = data;
     console.log(data_);
-    console.log("error comercial_c/listarPresupuesto");
+    console.log("error comercial_c/listarPresupuestoPRO");
+    // console.log("error comercial_c/listarPresupuesto");
 })
 
 db.analisis = data_;

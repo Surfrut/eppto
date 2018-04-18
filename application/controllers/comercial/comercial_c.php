@@ -3,8 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Comercial_c extends CI_Controller{
 
-  public function __construct()
-  {
+  public function __construct(){
     parent::__construct();
     $this->load->model('comercial/comercial_m');
   }
@@ -20,7 +19,7 @@ class Comercial_c extends CI_Controller{
 
   function listarPresupuestoPRO(){
     $valor = $this->comercial_m->listarPresupuestoPRO();
-    // echo json_encode($valor);
+    echo json_encode($valor);
     // print_r(json_encode($valor));
   }
 

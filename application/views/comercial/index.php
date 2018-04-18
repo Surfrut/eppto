@@ -52,39 +52,60 @@
 
     <!-- <button type="button" class="btn btn_actualiza jsgrid-button jsgrid-update-button"><i class="material-icons right"></i>asdasd</button> -->
 
-    <div class="fixed-action-btn">
-   <a class="btn-floating btn-large red">
-     <i class="large material-icons">mode_edit</i>
-   </a>
-   <ul>
-     <li><a class="btn-floating blue btn_descargar"><i class="material-icons">cloud_download</i></a></li>
-     <li><a class="btn-floating blue btn_pptoMasivo"><i class="material-icons">add_box</i></a></li>
-     <li><a class="btn-floating blue btn_nuevoPresupuesto"><i class="material-icons">add</i></a></li>
-   </ul>
- </div>
+    <!-- <div class="fixed-action-btn">
+       <a class="btn-floating btn-large red">
+         <i class="large material-icons">mode_edit</i>
+       </a>
+       <ul>
+         <li><a class="btn-floating blue btn_descargar"><i class="material-icons">cloud_download</i></a></li>
+         <li><a class="btn-floating blue btn_pptoMasivo"><i class="material-icons">add_box</i></a></li>
+         <li><a class="btn-floating blue btn_nuevoPresupuesto"><i class="material-icons">add</i></a></li>
+       </ul>
+     </div> -->
+
+     <div class="overlay-trigger">
+  <!-- If you don't want the overlay you don't need this -->
+
+  <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
+    <a class="btn-floating btn-large blue">
+      <i class="large material-icons">add</i>
+    </a>
+
+    <ul>
+      <li>
+        <span class="mobile-fab-tip">Descargar Estimado</span>
+        <a href="#" class="btn-floating tooltipped blue btn_tst" data-position="left" data-tooltip="Descargar Estimado">
+          <i class="material-icons">cloud_download</i>
+        </a>
+      </li>
+      <li>
+        <span class="mobile-fab-tip">Descargar Estimado/Despacho</span>
+        <a href="#" class="btn-floating tooltipped blue btn_descargar" data-position="left" data-tooltip="Descargar Estimado/Despacho">
+          <i class="material-icons">cloud_download</i>
+        </a>
+      </li>
+      <li>
+        <span class="mobile-fab-tip">Cargar Estimado</span>
+        <a href="#" class="btn-floating darken-1 tooltipped blue btn_pptoMasivo" data-position="left" data-tooltip="Cargar Estimado">
+          <i class="material-icons">file_upload</i>
+        </a>
+      </li>
+      <li>
+        <span class="mobile-fab-tip">Ingresar Manual</span>
+        <a href="#" class="btn-floating tooltipped blue btn_nuevoPresupuesto" data-position="left" data-tooltip="Ingresar Manual">
+          <i class="material-icons">add</i>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
 
 <!-- ESTRUCTURA DEL MODAL AGREGAR PRESUPUESTO -->
-<!-- Modal Structure -->
-<div id="modal1" class="modal modal-fixed-footer">
+<div id="modal1" class="modal modal-fixed-footer modal_agregar">
   <div class="modal-content">
     <h4>Agregar presupuesto</h4>
     <p>Completa los campos para registrar:</p>
     <form action="" method="POST">
-      <!-- CHECK PARA INGRESAR EL AÑO AL PRESUPUESTO -->
-      <!-- <div class="row">
-        <div class="col s3 m3 l3">
-          <p>
-           <input type="checkbox" class="filled-in pre_ano" id="filled-in-box" checked="checked" />
-           <label for="filled-in-box">2018</label>
-         </p>
-       </div>
-       <div class="col s3 m3 l3">
-         <p>
-          <input type="checkbox" class="filled-in pre_ano1" id="filled-in-box2" checked="" />
-          <label for="filled-in-box2">2019</label>
-        </p>
-       </div>
-      </div> -->
     <div class="row">
       <div class="input-field col s6">
         <div class="progress progress2">
@@ -369,6 +390,7 @@
     <script type="text/javascript" src="<?php base_url() ?>js/db.js"></script>
     <script type="text/javascript" src="<?php base_url() ?>js/comercial/comercial_j.js"></script>
     <script type="text/javascript" src="<?php base_url() ?>js/comercial/com_carga_j.js"></script>
+    <script type="text/javascript" src="<?php base_url() ?>js/eppto.js"></script>
 
   </body>
 </html>

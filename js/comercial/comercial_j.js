@@ -143,7 +143,7 @@ $('body').change('tr',function(){
 
 //FIN btn_nuevoPresupuesto AGREGAR PRESUPUESTO
 $('.btn_nuevoPresupuesto').on('click', function(){
-  $('.modal').modal('open');
+  $('.modal_agregar').modal('open');
   //CARGAR CLIENTES AL SELECT
   $.ajax({
     url: base_url+'comercial/comercial_c/listarClientes',
