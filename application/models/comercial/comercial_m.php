@@ -240,7 +240,6 @@ class comercial_m extends CI_Model{
     }
     fclose($fp);
     exit;
-
   }
 
   function descargarROCIO(){
@@ -270,9 +269,7 @@ class comercial_m extends CI_Model{
     header('Content-Encoding: UTF-8');
     header("Content-type: text/csv; charset=utf-8");
     header("Content-Disposition: attachment; filename=".$archivo);
-
     $fp = fopen("php://output", 'w');
-
     fwrite($fp, 'DOMINIO'.';');
     fwrite($fp, 'ID PPTO'.';');
     fwrite($fp, 'DESC. PPTO'.';');
@@ -319,7 +316,7 @@ class comercial_m extends CI_Model{
     fwrite($fp, 'Promedio'.';');
     fwrite($fp, 'Total UM'.';');
     fwrite($fp, 'Total Kilos'.';');
-    fwrite($fp, 'Gastros Comerciales'.';');
+    fwrite($fp, 'Gastos Comerciales'.';');
     fwrite($fp, 'Mon GC'."\n");
 
     foreach ($resultado as $row) {

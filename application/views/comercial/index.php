@@ -68,9 +68,8 @@
 
   <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
     <a class="btn-floating btn-large blue">
-      <i class="large material-icons">add</i>
+      <i class="large material-icons">menu</i>
     </a>
-
     <ul>
       <li>
         <span class="mobile-fab-tip">Descargar Estimado</span>
@@ -81,7 +80,7 @@
       <li>
         <span class="mobile-fab-tip">Descargar Estimado/Despacho</span>
         <a href="#" class="btn-floating tooltipped blue btn_descargar" data-position="left" data-tooltip="Descargar Estimado/Despacho">
-          <i class="material-icons">cloud_download</i>
+          <i class="material-icons">arrow_drop_down_circle</i>
         </a>
       </li>
       <li>
