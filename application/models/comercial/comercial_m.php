@@ -168,10 +168,6 @@ class comercial_m extends CI_Model{
       $resultado = $this->db->error();
     }
 
-    $this->db->select('pre_id,pre_dominio,pre_idpre,pre_descripcion_id,pre_fecha,pre_definitivo,pre_cliente,pre_descripcion_c,pre_pais,pre_mercado,pre_ship,pre_descripcion_s,pre_articulo,pre_descripcion_a,pre_um,pre_canal,pre_familia,pre_clase,pre_ano,pre_promedio,pre_entidad,pre_cant1,pre_desp1,pre_cant2,pre_desp2,pre_cant3,pre_desp3,pre_cant4,pre_desp4,pre_cant5,pre_desp5,pre_cant6,pre_desp6,pre_cant7,pre_desp7,pre_cant8,pre_desp8,pre_cant9,pre_desp9,pre_cant10,pre_desp10,pre_cant11,pre_desp11,pre_cant12,pre_desp12,pre_cant13,pre_cant14,pre_cant15,pre_totalppto1,pre_total_anual,pre_total_desp');
-    $this->db->from('presupuesto');
-    $presupuesto = $this->db->get()->result_array();
-
     date_default_timezone_set('Chile/Continental');
     $valor = new DateTime();
     $fecha = $valor->format('Y-m-d H:i:s');
@@ -248,8 +244,58 @@ class comercial_m extends CI_Model{
     $consultas = array();
     $query2 = '';
     for ($i=0; $i < count($valor); $i++) {
-      // $query2 .= " select * from presupuesto where pre_fecha = '".$valor[$i]['fecha']."' and pre_categoria = '".$valor[$i]['car_categoria']."' UNION ALL ";
-      $query2 .= " select pre_dominio,pre_idpre,pre_descripcion_id,pre_fecha,pre_definitivo,pre_cliente,pre_descripcion_c,pre_pais,pre_mercado,pre_ship,pre_descripcion_s,pre_articulo,pre_descripcion_a,pre_um,pre_canal,pre_familia,pre_clase,pre_cant1,pre_cant2,pre_cant3,pre_cant4,pre_cant5,pre_cant6,pre_cant7,pre_cant8,pre_cant9,pre_cant10,pre_cant11,pre_cant12,pre_totalppto1,pre_cant13,pre_cant14,pre_cant15,pre_cant16,pre_cant17,pre_cant18,pre_cant19,pre_cant20,pre_cant21,pre_cant22,pre_cant23,pre_cant24,pre_totalppto2,pre_promedio,pre_totalum,pre_totalkilos,pre_totalvalor,pre_gastocomercial from presupuesto where pre_fecha = '".$valor[$i]['fecha']."' and pre_categoria = '".$valor[$i]['car_categoria']."' UNION ALL ";
+      $query2 .= " select
+      pre_dominio,
+      pre_idpre,
+      pre_descripcion_id,
+      pre_fecha,
+      pre_definitivo,
+      pre_cliente,
+      pre_descripcion_c,
+      pre_pais,
+      pre_mercado,
+      pre_ship,
+      pre_descripcion_s,
+      pre_articulo,
+      pre_descripcion_a,
+      pre_um,
+      pre_canal,
+      pre_familia,
+      pre_clase,
+      pre_cant1,
+      pre_cant2,
+      pre_cant3,
+      pre_cant4,
+      pre_cant5,
+      pre_cant6,
+      pre_cant7,
+      pre_cant8,
+      pre_cant9,
+      pre_cant10,
+      pre_cant11,
+      pre_cant12,
+      pre_totalppto1,
+      pre_cant13,
+      pre_cant14,
+      pre_cant15,
+      pre_cant16,
+      pre_cant17,
+      pre_cant18,
+      pre_cant19,
+      pre_cant20,
+      pre_cant21,
+      pre_cant22,
+      pre_cant23,
+      pre_cant24,
+      pre_totalppto2,
+      pre_promedio,
+      pre_totalum,
+      pre_totalkilos,
+      pre_totalvalor,
+      pre_gastocomercial,
+      pre_categoria
+      from presupuesto
+      where pre_fecha = '".$valor[$i]['fecha']."' and pre_categoria = '".$valor[$i]['car_categoria']."' UNION ALL ";
       $arreglo = array('query' =>  $query);
       array_push($consultas,$arreglo);
     }
@@ -316,18 +362,178 @@ class comercial_m extends CI_Model{
     fwrite($fp, 'Promedio'.';');
     fwrite($fp, 'Total UM'.';');
     fwrite($fp, 'Total Kilos'.';');
+    fwrite($fp, 'Total Valor'.';');
     fwrite($fp, 'Gastos Comerciales'.';');
-    fwrite($fp, 'Mon GC'."\n");
+    fwrite($fp, 'Mon GC'.";");
+    fwrite($fp, 'TIPO-ARCHIVO'."\n");
 
     foreach ($resultado as $row) {
       fputcsv($fp, $row, ";");
     }
     fclose($fp);
     exit;
-
   }
 
+  function descargaPersonalizada($datos){
+    $query1 = '';
+    $datos = substr($datos,0,-1);
+    $datos = explode("_",$datos);
+    for ($i=0; $i < count($datos); $i++) {
+      $datos[$i] = str_replace("-"," - ",$datos[$i]);
+      $query1 .= " select max(pre_fecha) as pre_fecha,pre_categoria from presupuesto where pre_categoria = '".$datos[$i]."' UNION ALL ";
+    }
+    $query1 = substr($query1,0,-10);
+    $resultado1 = $this->db->query($query1)->result_array();
+    $query2 = '';
+    for ($i=0; $i < count($resultado1); $i++) {
+      $query2 .= " select
+      pre_dominio,
+      pre_idpre,
+      pre_descripcion_id,
+      pre_fecha,
+      pre_definitivo,
+      pre_cliente,
+      pre_descripcion_c,
+      pre_pais,
+      pre_mercado,
+      pre_ship,
+      pre_descripcion_s,
+      pre_articulo,
+      pre_descripcion_a,
+      pre_um,
+      pre_canal,
+      pre_familia,
+      pre_clase,
+      pre_cant1,
+      pre_cant2,
+      pre_cant3,
+      pre_cant4,
+      pre_cant5,
+      pre_cant6,
+      pre_cant7,
+      pre_cant8,
+      pre_cant9,
+      pre_cant10,
+      pre_cant11,
+      pre_cant12,
+      pre_totalppto1,
+      pre_cant13,
+      pre_cant14,
+      pre_cant15,
+      pre_cant16,
+      pre_cant17,
+      pre_cant18,
+      pre_cant19,
+      pre_cant20,
+      pre_cant21,
+      pre_cant22,
+      pre_cant23,
+      pre_cant24,
+      pre_totalppto2,
+      pre_promedio,
+      pre_totalum,
+      pre_totalkilos,
+      pre_totalvalor,
+      pre_gastocomercial,
+      pre_categoria
+      from presupuesto
+      where pre_categoria = '".$resultado1[$i]['pre_categoria']."' and pre_fecha = '".$resultado1[$i]['pre_fecha']."' UNION ALL ";
+    }
+    $query2 = substr($query2,0,-10);
+    $resultado;
+    if($this->db->query($query2)){
+      $resultado = $this->db->query($query2)->result_array();
+    }else{
+      $resultado = $this->db->error();
+    }
+    return $resultado;
+  }//fin descargaPersonalizada
 
-
+  function descargaPersonalizada2($datos){
+    $query1 = '';
+    $datos = substr($datos,0,-1);
+    $datos = explode("_",$datos);
+    for ($i=0; $i < count($datos); $i++) {
+      $datos[$i] = str_replace("-"," - ",$datos[$i]);
+      $query1 .= " select max(pre_fecha) as pre_fecha,pre_categoria from presupuesto where pre_categoria = '".$datos[$i]."' UNION ALL ";
+    }
+    $query1 = substr($query1,0,-10);
+    $resultado1 = $this->db->query($query1)->result_array();
+    $query2 = '';
+    for ($i=0; $i < count($resultado1); $i++) {
+      $query2 .= " select
+      pre_dominio,
+      pre_idpre,
+      pre_descripcion_id,
+      pre_fecha,
+      pre_definitivo,
+      pre_cliente,
+      pre_descripcion_c,
+      pre_pais,
+      pre_mercado,
+      pre_ship,
+      pre_descripcion_s,
+      pre_articulo,
+      pre_descripcion_a,
+      pre_um,
+      pre_canal,
+      pre_familia,
+      pre_clase,
+      pre_cant1,
+      pre_desp1,
+      pre_cant2,
+      pre_desp2,
+      pre_cant3,
+      pre_desp3,
+      pre_cant4,
+      pre_desp4,
+      pre_cant5,
+      pre_desp5,
+      pre_cant6,
+      pre_desp6,
+      pre_cant7,
+      pre_desp7,
+      pre_cant8,
+      pre_desp8,
+      pre_cant9,
+      pre_desp9,
+      pre_cant10,
+      pre_desp10,
+      pre_cant11,
+      pre_desp11,
+      pre_cant12,
+      pre_desp12,
+      pre_totalppto1,
+      pre_cant13,
+      pre_cant14,
+      pre_cant15,
+      pre_cant16,
+      pre_cant17,
+      pre_cant18,
+      pre_cant19,
+      pre_cant20,
+      pre_cant21,
+      pre_cant22,
+      pre_cant23,
+      pre_cant24,
+      pre_totalppto2,
+      pre_promedio,
+      pre_totalum,
+      pre_totalkilos,
+      pre_totalvalor,
+      pre_gastocomercial,
+      pre_categoria
+      from presupuesto
+      where pre_categoria = '".$resultado1[$i]['pre_categoria']."' and pre_fecha = '".$resultado1[$i]['pre_fecha']."' UNION ALL ";
+    }
+    $query2 = substr($query2,0,-10);
+    $resultado;
+    if($this->db->query($query2)){
+      $resultado = $this->db->query($query2)->result_array();
+    }else{
+      $resultado = $this->db->error();
+    }
+    return $resultado;
+  }//fin descargaPersonalizada2
 
 }

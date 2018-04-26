@@ -1,8 +1,10 @@
 // console.log("comercial_j ok");
 let global_asd
 $('.modal').modal();
-$('select').material_select();
-$(".button-collapse").sideNav();
+// $('select').formSelect(); //1.0
+$('select').material_select(); //0.98
+// $(".button-collapse").sidenav(); //1.0
+$(".button-collapse").sideNav(); //0.98
 
 $("#jsGrid").jsGrid({
   height: "800px",
@@ -267,19 +269,55 @@ if (valida) {
 
 $('.btn_descargar').on('click', function(){
 
-  window.location.href = base_url+'comercial/comercial_c/descargarPresupuesto';
+  // window.location.href = base_url+'comercial/comercial_c/descargarPresupuesto';
 
 });
 
 $('.btn_tst').on('click', function(){
 
   // window.location.href = base_url+'comercial/comercial_c/descargarROCIO';
-  // swal("NO TOQUE");
 
 });
 
-$('.btn_tst').on('click', function(){
-
-  window.location.href = base_url+'comercial/comercial_c/descargarROCIO';
-
+$('.btn_descargafiltro').on('click', function(){
+  $('.modal_descarga').modal('open');
 });
+
+$('.btn_descargafiltro').on('click', function(){
+let clases =  $(this).attr('class').split(" ");
+for (var i = 0; i < clases.length; i++) {
+  if (clases[i] == 'estimado') {
+    $('.btn_descargafiltrado').removeClass('estimadoDespachado');
+    $('.btn_descargafiltrado').addClass('estimado');
+  }else if(clases[i] == 'estimadoDespachado'){
+    $('.btn_descargafiltrado').removeClass('estimado');
+    $('.btn_descargafiltrado').addClass('estimadoDespachado');
+  }
+}
+});
+
+ $('.btn_descargafiltrado').on('click', function(){
+  let dominio = $("input[name='group1']:checked").val();
+  let arreglo = '';
+  let datos = {}
+  datos.sf_1 = $("input[name='group1']:checked").val();
+  datos.sf_2 = $("input[name='group2']:checked").val();
+  datos.sf_3 = $("input[name='group3']:checked").val();
+  datos.pf_1 = $("input[name='group4']:checked").val();
+  datos.pf_2 = $("input[name='group5']:checked").val();
+  for (var variable in datos) {
+    if(datos[variable] !== undefined){
+      arreglo +=(datos[variable].trim())+"_";
+    }
+  }
+  let clases = $(this).attr('class').split(" ");
+  for (var i = 0; i < clases.length; i++) {
+    if (clases[i] == 'estimado') {
+      // console.log(window.location.href = base_url+'comercial/comercial_c/descargaPersonalizada/'+arreglo);
+      window.location.href = base_url+'comercial/comercial_c/descargaPersonalizada/'+arreglo;
+    }else if(clases[i] == 'estimadoDespachado'){
+      window.location.href = base_url+'comercial/comercial_c/descargaPersonalizada2/'+arreglo;
+      // console.log(window.location.href = base_url+'comercial/comercial_c/descargaPersonalizada2/'+arreglo);
+    }
+  }
+ });

@@ -3,6 +3,10 @@ nav{
 	background-color: #2872bb;
 }
 
+.oculto{
+	display: none;
+}
+
 .color_eppto{
 	background-color: #2872bb;
 }

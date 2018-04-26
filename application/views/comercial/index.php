@@ -8,13 +8,13 @@
     <link type="text/css" rel="stylesheet" href="<?php base_url() ?>css/sweetalert2.css"  media="screen,projection"/>
     <link type="text/css" rel="stylesheet" href="<?php base_url() ?>css/jsgrid-theme.min.css"  media="screen,projection"/>
     <link type="text/css" rel="stylesheet" href="<?php base_url() ?>css/jsgrid.min.css"  media="screen,projection"/>
-    <link type="text/css" rel="stylesheet" href="<?php base_url() ?>css/materialize.css"  media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="<?php base_url() ?>css/materialize.css"  media="screen,projection"/> <!-- 0.98 -->
+    <!-- <link type="text/css" rel="stylesheet" href="<?php base_url() ?>css/materialize1.css"  media="screen,projection"/> 1.0 -->
     <link type="text/css" rel="stylesheet" href="<?php base_url() ?>css/eppto.css"  media="screen,projection"/>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <title>E. PRESUPUESTO <?php echo date('Y') ?></title>
 
-    <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
   </head>
 
@@ -50,21 +50,7 @@
     <div class="jsGrid" id="jsGrid">
     </div>
 
-    <!-- <button type="button" class="btn btn_actualiza jsgrid-button jsgrid-update-button"><i class="material-icons right"></i>asdasd</button> -->
-
-    <!-- <div class="fixed-action-btn">
-       <a class="btn-floating btn-large red">
-         <i class="large material-icons">mode_edit</i>
-       </a>
-       <ul>
-         <li><a class="btn-floating blue btn_descargar"><i class="material-icons">cloud_download</i></a></li>
-         <li><a class="btn-floating blue btn_pptoMasivo"><i class="material-icons">add_box</i></a></li>
-         <li><a class="btn-floating blue btn_nuevoPresupuesto"><i class="material-icons">add</i></a></li>
-       </ul>
-     </div> -->
-
      <div class="overlay-trigger">
-  <!-- If you don't want the overlay you don't need this -->
 
   <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
     <a class="btn-floating btn-large blue">
@@ -73,13 +59,13 @@
     <ul>
       <li>
         <span class="mobile-fab-tip">Descargar Estimado</span>
-        <a href="#" class="btn-floating tooltipped blue btn_tst" data-position="left" data-tooltip="Descargar Estimado">
+        <a href="#" class="btn-floating tooltipped blue btn_tst btn_descargafiltro estimado" data-position="left" data-tooltip="Descargar Estimado">
           <i class="material-icons">cloud_download</i>
         </a>
       </li>
       <li>
         <span class="mobile-fab-tip">Descargar Estimado/Despacho</span>
-        <a href="#" class="btn-floating tooltipped blue btn_descargar" data-position="left" data-tooltip="Descargar Estimado/Despacho">
+        <a href="#" class="btn-floating tooltipped blue btn_descargar btn_descargafiltro estimadoDespachado" data-position="left" data-tooltip="Descargar Estimado/Despacho">
           <i class="material-icons">arrow_drop_down_circle</i>
         </a>
       </li>
@@ -380,10 +366,48 @@
 </div>
 <!-- ESTRUCTURA MODAL CARGA ARCHIVO -->
 
+<div id="modal1" class="modal modal_descarga">
+  <div class="modal-content">
+    <h4>Prepara la descarga</h4>
+    <div class="divider"></div>
+<div class="row">
+  <div class="col s6 m6 l6">
+    <p class="center">SURFRUT</p>
+    <p class="p_sf">
+      <input name="group1" type="checkbox" id="id3" value="SURFRUT-RETAIL"/>
+      <label for="id3">SURFRUT - RETAIL</label>&nbsp;&nbsp;
+    </p>
+    <p>
+      <input name="group2" type="checkbox" id="id5" value="SURFRUT-MARRASCHINO"/>
+      <label for="id5">SURFRUT - MARRASCHINO</label>
+    </p>
+    <p>
+      <input name="group3" type="checkbox" id="id4" value="SURFRUT-INGREDIENTES"/>
+     <label for="id4">SURFRUT - INGREDIENTES</label>
+    </p>
+  </div>
+  <div class="col s6 m6 l6">
+    <p class="center">PUREFRUIT</p>
+    <p class="p_pf">
+      <input name="group4" type="checkbox" id="id6" value="PUREFRUIT-DOYPACK"/>
+      <label for="id6">PUREFRUIT - DOYPACK</label>&nbsp;&nbsp;
+    </p>
+    <p>
+      <input name="group5" type="checkbox" id="id7" value="PUREFRUIT-BULK"/>
+      <label for="id7">PUREFRUIT - BULK</label>
+    </p>
+  </div>
+</div>
+  </div>
+  <div class="modal-footer">
+    <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat btn_descargafiltrado color_eppto">Descargar</a>
+  </div>
+</div>
 
     <!--Import jQuery before materialize.js-->
     <script type="text/javascript" src="<?php base_url() ?>js/jquery-3.1.1.js"></script>
-    <script type="text/javascript" src="<?php base_url() ?>js/materialize.js"></script>
+    <script type="text/javascript" src="<?php base_url() ?>js/materialize.js"></script> <!-- 0.98 -->
+    <!-- <script type="text/javascript" src="<?php base_url() ?>js/materialize1.js"></script> 1.0-->
     <script type="text/javascript" src="<?php base_url() ?>js/sweetalert2.js"></script>
     <script type="text/javascript" src="<?php base_url() ?>js/jsgrid.min.js"></script>
     <script type="text/javascript" src="<?php base_url() ?>js/db.js"></script>
