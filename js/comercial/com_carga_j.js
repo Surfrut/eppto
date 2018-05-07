@@ -34,7 +34,7 @@ $("body").on('click', '.btn_cargarMasivo',function(){
          let suma = 0
          for (var i = 1; i < (loquesea.length)-1; i++) {
            suma = suma + parseInt(loquesea[i]['af']);
-           console.log(loquesea[i]['af']);
+           console.log(loquesea[i]['af'],loquesea.length);
          }
          $('.mod_contenido').hide();
          $('.mod_confirmacion').show();
