@@ -34,13 +34,17 @@ class com_carga_m extends CI_Model{
     date_default_timezone_set('Chile/Continental');
     $datos_confirmados = json_decode($datos_confirmados);
     $tipo_archivo = array_pop($datos_confirmados);
-    // var_dump($tipo_archivo);
+    // var_dump($tipo_archivo->car_fecha);
     //HACE EL INSERT A LA TABLA CARGAR
     for ($i=0; $i < count($tipo_archivo); $i++) {
       $datos = array('car_categoria' => $tipo_archivo->car_categoria, 'car_hora' => $tipo_archivo->car_hora, 'car_fecha' => $tipo_archivo->car_fecha);
       $insert = $this->db->insert('carga', $datos);
     }
     //HACE EL INSERT A LA TABLA PRESUPUESTO
+    //ELIMINAR DEL PRESUPUESTO SEGÚN ARCHIVO Y FECHA DE PRE_FECHA
+    $query_delete = "delete from presupuesto WHERE pre_categoria = '$tipo_archivo->car_categoria' AND pre_fecha = '$tipo_archivo->car_fecha'";
+    $this->db->query($query_delete);
+    //ELIMINAR DEL PRESUPUESTO SEGÚN ARCHIVO Y FECHA DE PRE_FECHA
     for ($i=1; $i < count($datos_confirmados); $i++) {
       $fecha2 = date($format = "Y-m-d", PHPExcel_Shared_Date::ExcelToPHP($datos_confirmados[$i]->e));
       $nuevafecha = strtotime('+1 day',strtotime($fecha2));
