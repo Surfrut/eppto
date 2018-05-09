@@ -455,9 +455,10 @@ class comercial_m extends CI_Model{
     $datos = explode("_",$datos);
     for ($i=0; $i < count($datos); $i++) {
       $datos[$i] = str_replace("-"," - ",$datos[$i]);
-      $query1 .= " select max(pre_fecha) as pre_fecha,pre_categoria from presupuesto where pre_categoria = '".$datos[$i]."' UNION ALL ";
+      $query1 .= " select max(car_fecha) as car_fecha,car_categoria from carga where car_categoria = '".$datos[$i]."' UNION ALL ";
     }
     $query1 = substr($query1,0,-10);
+    //var_dump($query1);
     $resultado1 = $this->db->query($query1)->result_array();
     $query2 = '';
     for ($i=0; $i < count($resultado1); $i++) {
@@ -524,9 +525,76 @@ class comercial_m extends CI_Model{
       pre_gastocomercial,
       pre_categoria
       from presupuesto
-      where pre_categoria = '".$resultado1[$i]['pre_categoria']."' and pre_fecha = '".$resultado1[$i]['pre_fecha']."' UNION ALL ";
+      where pre_categoria = '".$resultado1[$i]['car_categoria']."' and pre_fecha = '".$resultado1[$i]['car_fecha']."' UNION ALL ";
     }
-    $query2 = substr($query2,0,-10);
+    $query2 = substr($query2,0,-10)." UNION ALL 
+	select
+      desp_dominio,
+      '',
+      '',
+      '',
+      '',
+      desp_cliente,
+      '',
+      '',
+      '',
+      desp_ship,
+      '',
+      desp_articulo,
+      '',
+      '',
+      '',
+      '',
+      '',
+      0,
+      desp_desp1,
+      0,
+      desp_desp2,
+      0,
+      desp_desp3,
+      0,
+      desp_desp4,
+      0,
+      desp_desp5,
+      0,
+      desp_desp6,
+      0,
+      desp_desp7,
+      0,
+      desp_desp8,
+      0,
+      desp_desp9,
+      0,
+      desp_desp10,
+      0,
+      desp_desp11,
+      0,
+      desp_desp12,
+      0,
+      0,
+      0,
+	  
+	  0,
+      0,
+      0,
+	  0,
+      0,
+      0,
+      
+	  0,
+	  0,
+      0,
+      0,
+      
+	  0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      ''
+      from despachos";
+    // var_dump($query2);
     $resultado;
     if($this->db->query($query2)){
       $resultado = $this->db->query($query2)->result_array();

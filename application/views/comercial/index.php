@@ -40,7 +40,7 @@
           </div></li>
           <div class="divider"></div>
           <li><a class="waves-effect btn_iniciarsesion" href="#">Ingresar a EPPTO</a></li>
-          <li><a class="btn-floating blue btn_tst"><i class="material-icons">cancel</i></a></li>
+          <!-- <li><a class="btn-floating blue btn_tst"><i class="material-icons">cancel</i></a></li> -->
 
         </ul>
       </div>
@@ -305,20 +305,32 @@
     <div class="mod_contenido">
       <form action="#" class="formulario_archivo" enctype="multipart/form-data" name="mi_archivo">
         <div class="tipo_archivo">
-          <p>
-            <input type="checkbox" name="surfrut" id="test5" value="SURFRUT - RETAIL"/>
-            <label for="test5">SURFRUT - RETAIL</label>&nbsp;&nbsp;
-            <input type="checkbox" name="surfrut" id="test6" value="SURFRUT - INGREDIENTES"/>
-            <label for="test6">SURFRUT - INGREDIENTES</label>&nbsp;&nbsp;
-            <input type="checkbox" name="surfrut" id="test7" value="SURFRUT - MARRASCHINO"/>
-            <label for="test7">SURFRUT - MARRASCHINO</label>
-          </p>
-          <p>
-            <input type="checkbox" name="surfrut" id="test8" value="PUREFRUIT - DOYPACK"/>
-            <label for="test8">PUREFRUIT - DOYPACK</label>&nbsp;&nbsp;
-            <input type="checkbox" name="surfrut" id="test9" value="PUREFRUIT - BULK"/>
-            <label for="test9">PUREFRUIT - BULK</label>
-          </p>
+          <div class="row">
+            <div class="col m6">
+              <p>
+                <input class="with-gap" name="surfrut" type="radio" id="test1" value="SURFRUT - RETAIL"/>
+                <label for="test1">SURFRUT - RETAIL</label>
+              </p>
+              <p>
+                <input class="with-gap" name="surfrut" type="radio" id="test2" value="SURFRUT - INGREDIENTES"/>
+                <label for="test2">SURFRUT - INGREDIENTES</label>
+              </p>
+              <p>
+                <input class="with-gap" name="surfrut" type="radio" id="test3" value="SURFRUT - MARRASCHINO"/>
+                <label for="test3">SURFRUT - MARRASCHINO</label>
+              </p>
+            </div>
+            <div class="col m6">
+              <p>
+                <input class="with-gap" name="surfrut" type="radio" id="test4" value="PUREFRUIT - DOYPACK"/>
+                <label for="test4">PUREFRUIT - DOYPACK</label>
+              </p>
+              <p>
+                <input class="with-gap" name="surfrut" type="radio" id="test5" value="PUREFRUIT - BULK"/>
+                <label for="test5">PUREFRUIT - BULK</label>
+              </p>
+            </div>
+          </div>
         </div>
         <div class="file-field input-field">
           <div class="btn color_eppto">

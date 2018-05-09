@@ -121,7 +121,6 @@ class com_carga_c extends CI_Controller{
   //FUNCTION QUE VALIDA LOS DATOS CONTRA QAD Y HACE INSERT A MYSQL
   function consultaArticulo(){
     $valor = $this->input->post('datos_confirmados');
-    // $datos = json_decode($valor);
     $respuesta = $this->com_carga_m->consultaArticulo($valor);
     echo json_encode($respuesta);
   }

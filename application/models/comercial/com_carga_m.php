@@ -9,12 +9,12 @@ class com_carga_m extends CI_Model{
 
   function consultaArticulo($articulo){
     $qad = $this->load->database('qad', TRUE);
+
     $articulo = json_decode($articulo, true);
     $tipo_archivo = array_pop($articulo);
-
+    $datos = array();
     for ($i=1; $i < count($articulo); $i++) {
       $encontrado = false;
-      $datos = array();
       $valor = $articulo[$i]['m'];
       $query = "select pt_part from pub.pt_mstr where pt_part = '$valor' with (nolock)";
       $execute = odbc_exec($qad->conn_id, $query);
@@ -34,17 +34,15 @@ class com_carga_m extends CI_Model{
     date_default_timezone_set('Chile/Continental');
     $datos_confirmados = json_decode($datos_confirmados);
     $tipo_archivo = array_pop($datos_confirmados);
-    // var_dump($tipo_archivo->car_fecha);
-    //HACE EL INSERT A LA TABLA CARGAR
-    for ($i=0; $i < count($tipo_archivo); $i++) {
-      $datos = array('car_categoria' => $tipo_archivo->car_categoria, 'car_hora' => $tipo_archivo->car_hora, 'car_fecha' => $tipo_archivo->car_fecha);
-      $insert = $this->db->insert('carga', $datos);
-    }
-    //HACE EL INSERT A LA TABLA PRESUPUESTO
+
     //ELIMINAR DEL PRESUPUESTO SEGÚN ARCHIVO Y FECHA DE PRE_FECHA
     $query_delete = "delete from presupuesto WHERE pre_categoria = '$tipo_archivo->car_categoria' AND pre_fecha = '$tipo_archivo->car_fecha'";
     $this->db->query($query_delete);
     //ELIMINAR DEL PRESUPUESTO SEGÚN ARCHIVO Y FECHA DE PRE_FECHA
+
+    $asd = 0;
+
+    //HACE EL INSERT A LA TABLA PRESUPUESTO
     for ($i=1; $i < count($datos_confirmados); $i++) {
       $fecha2 = date($format = "Y-m-d", PHPExcel_Shared_Date::ExcelToPHP($datos_confirmados[$i]->e));
       $nuevafecha = strtotime('+1 day',strtotime($fecha2));
@@ -106,7 +104,17 @@ class com_carga_m extends CI_Model{
       'pre_mongc' => $datos_confirmados[$i]->ay,
       'pre_fechaArchivo' => $nuevafecha);
       $inserta = $this->db->insert('presupuesto', $datos);
+    }//FIN for
+
+    //HACE EL INSERT A LA TABLA CARGAR
+    if (count($datos_confirmados)>0) {
+      for ($i=0; $i < count($tipo_archivo); $i++) {
+        $datos = array('car_categoria' => $tipo_archivo->car_categoria, 'car_hora' => $tipo_archivo->car_hora, 'car_fecha' => $tipo_archivo->car_fecha);
+        $insert = $this->db->insert('carga', $datos);
+      }
     }
+    //HACE EL INSERT A LA TABLA CARGAR
+
   }
 
 
