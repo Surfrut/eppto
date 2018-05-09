@@ -34,8 +34,9 @@ $("body").on('click', '.btn_cargarMasivo',function(){
          let suma = 0
          for (var i = 0; i < (loquesea.length)-1; i++) {
            suma = suma + parseInt(loquesea[i]['af']);
-           console.log(loquesea[i]['af'],loquesea.length,i);
+           // console.log(loquesea[i]['af'],loquesea.length,i);
          }
+         console.log(suma, (loquesea.length)-2);
          $('.mod_contenido').hide();
          $('.mod_confirmacion').show();
          $('.footer').show();
@@ -76,11 +77,11 @@ $('body').on('click', '.btn_confirmaResumen', function(event) {
     let datos_insertar = JSON.stringify(datos_confirmados)
 
     console.log("success com_carga_c/consultaArticulo");
-    console.log(data);
-    if(data == ''){
-      $('.modal_contenido').modal('close');
-      swal("Debes cargar un archivo con al menos un registro.");
-    }else{
+    console.log(data.length);
+    // if(data == ''){
+      // $('.modal_contenido').modal('close');
+      // swal("Debes cargar un archivo con al menos un registro.");
+    // }else{
 
       //INICIO VALIDACIONES
       if (data.length==0) {
@@ -314,7 +315,8 @@ $('body').on('click', '.btn_confirmaResumen', function(event) {
             swal("debes subir un archivo con al menos un registro");
           }
           //FIN VALIDACIONES
-    }//fin else donde data esta vacío.
+
+    // }//fin else donde data esta vacío.
 
 
   })
