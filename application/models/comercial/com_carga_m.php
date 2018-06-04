@@ -15,7 +15,7 @@ class com_carga_m extends CI_Model{
     $datos = array();
     for ($i=1; $i < count($articulo); $i++) {
       $encontrado = false;
-      $valor = $articulo[$i]['m'];
+      $valor = trim($articulo[$i]['m']);
       $query = "select pt_part from pub.pt_mstr where pt_part = '$valor' with (nolock)";
       $execute = odbc_exec($qad->conn_id, $query);
       while (odbc_fetch_array($execute)) {
