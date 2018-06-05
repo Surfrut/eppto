@@ -238,6 +238,63 @@ class Comercial_c extends CI_Controller{
     // echo json_encode($valor);
   }
 
-
+function descargaTemplate(){
+  $archivo = 'EPPTO_TEMPLATE.csv';
+  header('Content-Encoding: UTF-8');
+  header("Content-type: text/csv; charset=utf-8");
+  header("Content-Disposition: attachment; filename=".$archivo);
+  $fp = fopen("php://output", 'w');
+  fwrite($fp, 'Entidad'.';');
+  fwrite($fp, 'DESC. ENTIDAD'.';');
+  fwrite($fp, 'ID PPTO'.';');
+  fwrite($fp, 'DESC. PPTO'.';');
+  fwrite($fp, 'Fecha'.';');
+  fwrite($fp, 'Definitivo'.';');
+  fwrite($fp, 'CLIENTeE'.';');
+  fwrite($fp, 'DESCRIPCION'.';');
+  fwrite($fp, 'Pais'.';');
+  fwrite($fp, 'Mercado'.';');
+  fwrite($fp, 'EMBARCAR-A'.';');
+  fwrite($fp, 'DESCRIPCION'.';');
+  fwrite($fp, 'ARTICULO'.';');
+  fwrite($fp, 'DESCRIPCION'.';');
+  fwrite($fp, 'UM'.';');
+  fwrite($fp, 'CANAL'.';');
+  fwrite($fp, 'FAMILIA'.';');
+  fwrite($fp, 'CLASE'.';');
+  fwrite($fp, 'GRUPO'.';');
+  fwrite($fp, 'Ene 2018'.';');
+  fwrite($fp, 'Feb 2018'.';');
+  fwrite($fp, 'Mar 2018'.';');
+  fwrite($fp, 'Abr 2018'.';');
+  fwrite($fp, 'May 2018'.';');
+  fwrite($fp, 'Jun 2018'.';');
+  fwrite($fp, 'Jul 2018'.';');
+  fwrite($fp, 'Ago 2018'.';');
+  fwrite($fp, 'Sep 2018'.';');
+  fwrite($fp, 'Oct 2018'.';');
+  fwrite($fp, 'Nov 2018'.';');
+  fwrite($fp, 'Dic 2018'.';');
+  fwrite($fp, 'Totalppto1'.';');
+  fwrite($fp, 'Ene 2019'.';');
+  fwrite($fp, 'Feb 2019'.';');
+  fwrite($fp, 'Mar 2019'.';');
+  fwrite($fp, 'Abr 2019'.';');
+  fwrite($fp, 'May 2019'.';');
+  fwrite($fp, 'Jun 2019'.';');
+  fwrite($fp, 'Jul 2019'.';');
+  fwrite($fp, 'Ago 2019'.';');
+  fwrite($fp, 'Sep 2019'.';');
+  fwrite($fp, 'Oct 2019'.';');
+  fwrite($fp, 'Nov 2019'.';');
+  fwrite($fp, 'Dic 2019'.';');
+  fwrite($fp, 'Totalppto2'.';');
+  fwrite($fp, 'Promedio'.';');
+  fwrite($fp, 'Total UM'.';');
+  fwrite($fp, 'Total Kilos'.';');
+  fwrite($fp, 'Total Valor'.';');
+  fwrite($fp, 'Gastos Comerciales'.';');
+  fwrite($fp, 'Mon GC'."\n");
+}
 
 }
