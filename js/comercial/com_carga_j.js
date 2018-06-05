@@ -4,6 +4,10 @@ $('.btn_pptoMasivo').on('click', function(){
   $('.modal_cargaMasiva').modal('open');
 });
 
+$('.btn_descargaTemplate').on('click',function(){
+  window.location.href = base_url+'comercial/comercial_c/descargaTemplate';
+});
+
 //CARGA ARCHIVO PARA LECTURA
 let datos_confirmados
 $("body").on('click', '.btn_cargarMasivo',function(){
@@ -29,8 +33,8 @@ $("body").on('click', '.btn_cargarMasivo',function(){
          $('.mod_preloader').hide();
          $('.mod_contenido').show();
          console.log(data);
+         datos_confirmados = data
          let loquesea = JSON.parse(data);
-         datos_confirmados = loquesea;
          let suma = 0
          for (var i = 0; i < (loquesea.length)-1; i++) {
            suma = suma + parseInt(loquesea[i]['af']);
@@ -57,13 +61,15 @@ $("body").on('click', '.btn_cargarMasivo',function(){
 
 $('body').on('click', '.btn_confirmaResumen', function(event) {
   console.log(datos_confirmados);
+  // console.log(JSON.stringify(datos_confirmados));
+
   //CONSULTA ARTICULOS
   $.ajax({
     url: base_url+'comercial/com_carga_c/consultaArticulo',
     type: 'POST',
     dataType: 'json',
     data: {
-      datos_confirmados: JSON.stringify(datos_confirmados)
+      datos_confirmados:datos_confirmados
     },
     beforeSend: function(){
       $('.mod_contenido').hide();
@@ -74,7 +80,7 @@ $('body').on('click', '.btn_confirmaResumen', function(event) {
     }
   })
   .done(function(data) {
-    let datos_insertar = JSON.stringify(datos_confirmados)
+    let datos_insertar = datos_confirmados
 
     console.log("success com_carga_c/consultaArticulo");
     console.log(data.length);

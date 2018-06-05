@@ -23,7 +23,7 @@
 			<a href="<?php echo base_url() ?>" class="brand-logo">Control Procesos de Calidad</a>
 			<a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
 			<ul class="right hide-on-med-and-down ul_sesion">
-				<li><a class="waves-effect btn_iniciarsesion" href="#">Ingresar a CPC</a></li>
+				<li><a class="waves-effect btn_descargaTemplate" href="#">Descarga Template</a></li>
 			</ul>
 			<ul id="mobile-demo" class="side-nav">
 				<li><div class="userView">
@@ -34,7 +34,7 @@
 					<a href="#!name"><span class="black-text name perfil_nombre">Visita</span></a>
 				</div></li>
 				<div class="divider"></div>
-				<li><a class="waves-effect btn_iniciarsesion" href="#">Ingresar a CPC</a></li>
+				<li><a class="waves-effect btn_descargaTemplate" href="#">Descarga Template</a></li>
 			</ul>
 		</div>
 	</nav>
