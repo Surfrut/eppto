@@ -9,17 +9,16 @@ class com_carga_m extends CI_Model{
 
   function consultaArticulo($articulo){
     $qad = $this->load->database('qad', TRUE);
-
     $articulo = json_decode($articulo, true);
-    $tipo_archivo = array_pop($articulo);
+    $tipo_articulo = array_pop($articulo);
+    // var_dump(gettype($articulo));
+    // var_dump($articulo);
     $datos = array();
     for ($i=1; $i < count($articulo); $i++) {
       $encontrado = false;
       $valor = trim($articulo[$i]['m']);
-      // $valor = $articulo[$i]['m'];
       $query = "select pt_part from pub.pt_mstr where pt_part = '$valor' with (nolock)";
       $execute = odbc_exec($qad->conn_id, $query);
-
       while (odbc_fetch_array($execute)) {
         $encontrado = true;
       }
@@ -76,8 +75,9 @@ class com_carga_m extends CI_Model{
       'pre_cant22' => $datos_confirmados[$i]->ap,
       'pre_cant23' => $datos_confirmados[$i]->aq,
       'pre_cant24' => $datos_confirmados[$i]->ar,
-      'pre_dominio' => $datos_confirmados[$i]->b,
+      'pre_descripcion_d' => $datos_confirmados[$i]->b,
       'pre_clase' => $datos_confirmados[$i]->r,
+      'pre_grupo' => $datos_confirmados[$i]->s,
       'pre_variedad' => $datos_confirmados[$i]->o,
       'pre_ship' => $datos_confirmados[$i]->k,
       'pre_descripcion_s' => $datos_confirmados[$i]->l,

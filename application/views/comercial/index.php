@@ -28,7 +28,7 @@
         <a href="<?php echo base_url() ?>" class="brand-logo">Estimado Presupuesto de venta <?php echo date('Y') ?></a>
         <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
         <ul class="right hide-on-med-and-down">
-          <li><a class="waves-effect btn_iniciarsesion" href="#">Ingresar a EPPTO</a></li>
+          <li><a class="waves-effect btn_descargaTemplate" href="#">Descarga Template</a></li>
           <li><a class='dropdown-button dropnav' href='#!' data-activates='dropdown1'></a></li>
         </ul>
         <ul id="mobile-demo" class="side-nav ul_sesion">
@@ -39,9 +39,7 @@
             <a href="#!name"><span class="black-text name perfil_nombre">Visita</span></a>
           </div></li>
           <div class="divider"></div>
-          <li><a class="waves-effect btn_iniciarsesion" href="#">Ingresar a EPPTO</a></li>
-          <!-- <li><a class="btn-floating blue btn_tst"><i class="material-icons">cancel</i></a></li> -->
-
+          <li><a class="waves-effect btn_descargaTemplate" href="#">Descarga Template</a></li>
         </ul>
       </div>
     </nav>
