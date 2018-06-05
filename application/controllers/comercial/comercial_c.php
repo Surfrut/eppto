@@ -83,12 +83,13 @@ class Comercial_c extends CI_Controller{
     // header("Content-Type: application/download");
     // header("Content-Disposition: attachment; filename=".$archivo);
     $fp = fopen("php://output", 'w');
-    fwrite($fp, 'DOMINIO'.';');
+    fwrite($fp, 'Entidad'.';');
+    fwrite($fp, 'DESC. ENTIDAD'.';');
     fwrite($fp, 'ID PPTO'.';');
     fwrite($fp, 'DESC. PPTO'.';');
     fwrite($fp, 'Fecha'.';');
     fwrite($fp, 'Definitivo'.';');
-    fwrite($fp, 'CLIENTE'.';');
+    fwrite($fp, 'CLIENTeE'.';');
     fwrite($fp, 'DESCRIPCION'.';');
     fwrite($fp, 'Pais'.';');
     fwrite($fp, 'Mercado'.';');
@@ -100,6 +101,7 @@ class Comercial_c extends CI_Controller{
     fwrite($fp, 'CANAL'.';');
     fwrite($fp, 'FAMILIA'.';');
     fwrite($fp, 'CLASE'.';');
+    fwrite($fp, 'GRUPO'.';');
     fwrite($fp, 'Ene 2018'.';');
     fwrite($fp, 'Feb 2018'.';');
     fwrite($fp, 'Mar 2018'.';');
@@ -131,6 +133,7 @@ class Comercial_c extends CI_Controller{
     fwrite($fp, 'Total Kilos'.';');
     fwrite($fp, 'Total Valor'.';');
     fwrite($fp, 'Gastos Comerciales'.';');
+    fwrite($fp, 'Mon GC'.';');
     fwrite($fp, 'TIPO-ARCHIVO'."\n");
     foreach ($valor as $row) {
       fputcsv($fp, $row, ";");
@@ -162,15 +165,16 @@ class Comercial_c extends CI_Controller{
     // header("Content-Type: application/download");
     // header("Content-Disposition: attachment; filename=".$archivo);
     $fp = fopen("php://output", 'w');
-    fwrite($fp, 'DOMINIO'.';');
+    fwrite($fp, 'ENTIDAD'.';');
+    fwrite($fp, 'DESC. ENTIDAD'.';');
     fwrite($fp, 'ID PPTO'.';');
     fwrite($fp, 'DESC. PPTO'.';');
-    fwrite($fp, 'Fecha'.';');
-    fwrite($fp, 'Definitivo'.';');
+    fwrite($fp, 'FECHA'.';');
+    fwrite($fp, 'DEFINITIVO'.';');
     fwrite($fp, 'CLIENTE'.';');
     fwrite($fp, 'DESCRIPCION'.';');
-    fwrite($fp, 'Pais'.';');
-    fwrite($fp, 'Mercado'.';');
+    fwrite($fp, 'PAIS'.';');
+    fwrite($fp, 'MERCADO'.';');
     fwrite($fp, 'EMBARCAR-A'.';');
     fwrite($fp, 'DESCRIPCION'.';');
     fwrite($fp, 'ARTICULO'.';');
@@ -179,6 +183,7 @@ class Comercial_c extends CI_Controller{
     fwrite($fp, 'CANAL'.';');
     fwrite($fp, 'FAMILIA'.';');
     fwrite($fp, 'CLASE'.';');
+    fwrite($fp, 'GRUPO'.';');
     fwrite($fp, 'Ene 2018'.';');
     fwrite($fp, 'Desp. Ene 2018'.';');
     fwrite($fp, 'Feb 2018'.';');
@@ -222,6 +227,7 @@ class Comercial_c extends CI_Controller{
     fwrite($fp, 'Total Kilos'.';');
     fwrite($fp, 'Total Valor'.';');
     fwrite($fp, 'Gastos Comerciales'.';');
+    fwrite($fp, 'Mon GC'.';');
     fwrite($fp, 'TIPO-ARCHIVO'."\n");
     foreach ($valor as $row) {
       fputcsv($fp, $row, ";");

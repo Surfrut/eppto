@@ -13,7 +13,6 @@ class com_carga_m extends CI_Model{
     $articulo = json_decode($articulo, true);
     $tipo_archivo = array_pop($articulo);
     $datos = array();
-    $valor ;
     for ($i=1; $i < count($articulo); $i++) {
       $encontrado = false;
       $valor = trim($articulo[$i]['m']);

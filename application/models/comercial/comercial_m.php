@@ -16,6 +16,7 @@ class comercial_m extends CI_Model{
     pre_descripcion_a,
     pre_familia,
     pre_clase,
+    pre_grupo,
     pre_variedad,
     pre_cliente,
     pre_descripcion_c,
@@ -180,7 +181,7 @@ class comercial_m extends CI_Model{
     $fp = fopen("php://output", 'w');
 
     fwrite($fp, '#'.';');
-    fwrite($fp, 'DOMINIO'.';');
+    fwrite($fp, 'Entidad'.';');
     fwrite($fp, 'ID PPTO'.';');
     fwrite($fp, 'DESC. PPTO'.';');
     fwrite($fp, 'Fecha'.';');
@@ -197,6 +198,7 @@ class comercial_m extends CI_Model{
     fwrite($fp, 'CANAL'.';');
     fwrite($fp, 'FAMILIA'.';');
     fwrite($fp, 'CLASE'.';');
+    fwrite($fp, 'GRUPO'.';');
     fwrite($fp, 'ANO'.';');
     fwrite($fp, 'Promedio'.';');
     fwrite($fp, 'Entidad'.';');
@@ -262,6 +264,7 @@ class comercial_m extends CI_Model{
       pre_canal,
       pre_familia,
       pre_clase,
+      pre_grupo,
       pre_cant1,
       pre_cant2,
       pre_cant3,
@@ -293,6 +296,7 @@ class comercial_m extends CI_Model{
       pre_totalkilos,
       pre_totalvalor,
       pre_gastocomercial,
+      pre_mongc,
       pre_categoria
       from presupuesto
       where pre_fecha = '".$valor[$i]['fecha']."' and pre_categoria = '".$valor[$i]['car_categoria']."' UNION ALL ";
@@ -316,15 +320,16 @@ class comercial_m extends CI_Model{
     header("Content-type: text/csv; charset=utf-8");
     header("Content-Disposition: attachment; filename=".$archivo);
     $fp = fopen("php://output", 'w');
-    fwrite($fp, 'DOMINIO'.';');
+    fwrite($fp, 'ENTIDAD'.';');
+    fwrite($fp, 'DESC. ENTIDAD'.';');
     fwrite($fp, 'ID PPTO'.';');
     fwrite($fp, 'DESC. PPTO'.';');
-    fwrite($fp, 'Fecha'.';');
-    fwrite($fp, 'Definitivo'.';');
+    fwrite($fp, 'FEHCA'.';');
+    fwrite($fp, 'DEFINITIVO'.';');
     fwrite($fp, 'CLIENTE'.';');
     fwrite($fp, 'DESCRIPCION'.';');
-    fwrite($fp, 'Pais'.';');
-    fwrite($fp, 'Mercado'.';');
+    fwrite($fp, 'PAIS'.';');
+    fwrite($fp, 'MERCADO'.';');
     fwrite($fp, 'EMBARCAR-A'.';');
     fwrite($fp, 'DESCRIPCION'.';');
     fwrite($fp, 'ARTICULO'.';');
@@ -333,6 +338,7 @@ class comercial_m extends CI_Model{
     fwrite($fp, 'CANAL'.';');
     fwrite($fp, 'FAMILIA'.';');
     fwrite($fp, 'CLASE'.';');
+    fwrite($fp, 'GRUPO'.';');
     fwrite($fp, 'Ene 2018'.';');
     fwrite($fp, 'Feb 2018'.';');
     fwrite($fp, 'Mar 2018'.';');
@@ -375,9 +381,32 @@ class comercial_m extends CI_Model{
   }
 
   function descargaPersonalizada($datos){
+ // $encontroprimero=0;
+ //  if(strpos($datos,'SURFRUT')){
+ //    $filtrodominio="in('SURFRUT'";
+ //    $encontroprimero=1;
+ //  }else {
+ //    $filtrodominio="in(";
+ //  }
+ //  if(strpos($datos,'PUREFRUIT')){
+ //
+ //  if($encontroprimero){
+ //     $filtrodominio=$filtrodominio.",'PUREFRUI')";
+ //   }else{
+ //     $filtrodominio=$filtrodominio."'PUREFRUI')";
+ //
+ //   }
+ //
+ //  }else{
+ //    $filtrodominio=$filtrodominio.")";
+ //
+ //  }
+
     $query1 = '';
     $datos = substr($datos,0,-1);
+
     $datos = explode("_",$datos);
+
     for ($i=0; $i < count($datos); $i++) {
       $datos[$i] = str_replace("-"," - ",$datos[$i]);
       $query1 .= " select max(pre_fecha) as pre_fecha,pre_categoria from presupuesto where pre_categoria = '".$datos[$i]."' UNION ALL ";
@@ -388,6 +417,7 @@ class comercial_m extends CI_Model{
     for ($i=0; $i < count($resultado1); $i++) {
       $query2 .= " select
       pre_dominio,
+      pre_descripcion_d,
       pre_idpre,
       pre_descripcion_id,
       pre_fecha,
@@ -404,6 +434,7 @@ class comercial_m extends CI_Model{
       pre_canal,
       pre_familia,
       pre_clase,
+      pre_grupo,
       pre_cant1,
       pre_cant2,
       pre_cant3,
@@ -435,6 +466,7 @@ class comercial_m extends CI_Model{
       pre_totalkilos,
       pre_totalvalor,
       pre_gastocomercial,
+      pre_mongc,
       pre_categoria
       from presupuesto
       where pre_categoria = '".$resultado1[$i]['pre_categoria']."' and pre_fecha = '".$resultado1[$i]['pre_fecha']."' UNION ALL ";
@@ -458,12 +490,12 @@ class comercial_m extends CI_Model{
       $query1 .= " select max(car_fecha) as car_fecha,car_categoria from carga where car_categoria = '".$datos[$i]."' UNION ALL ";
     }
     $query1 = substr($query1,0,-10);
-    //var_dump($query1);
     $resultado1 = $this->db->query($query1)->result_array();
     $query2 = '';
     for ($i=0; $i < count($resultado1); $i++) {
       $query2 .= " select
       pre_dominio,
+      pre_descripcion_d,
       pre_idpre,
       pre_descripcion_id,
       pre_fecha,
@@ -480,6 +512,7 @@ class comercial_m extends CI_Model{
       pre_canal,
       pre_familia,
       pre_clase,
+      pre_grupo,
       pre_cant1,
       pre_desp1,
       pre_cant2,
@@ -523,13 +556,17 @@ class comercial_m extends CI_Model{
       pre_totalkilos,
       pre_totalvalor,
       pre_gastocomercial,
+      pre_mongc,
       pre_categoria
       from presupuesto
       where pre_categoria = '".$resultado1[$i]['car_categoria']."' and pre_fecha = '".$resultado1[$i]['car_fecha']."' UNION ALL ";
     }
-    $query2 = substr($query2,0,-10)." UNION ALL 
+    $query2 = substr($query2,0,-10)." UNION ALL
 	select
       desp_dominio,
+      '',
+      '',
+      '',
       '',
       '',
       '',
@@ -573,19 +610,19 @@ class comercial_m extends CI_Model{
       0,
       0,
       0,
-	  
+
 	  0,
       0,
       0,
 	  0,
       0,
       0,
-      
+
 	  0,
 	  0,
       0,
       0,
-      
+
 	  0,
       0,
       0,
