@@ -3,6 +3,9 @@ $('.mod_confirmacion').hide();
 $('.btn_pptoMasivo').on('click', function(){
   $('.modal_cargaMasiva').modal('open');
 });
+$("body").on('click', '.with-gap',function() {
+  console.log($(this).val());
+});
 
 $('.btn_descargaTemplate').on('click',function(){
   window.location.href = base_url+'comercial/comercial_c/descargaTemplate';
@@ -330,5 +333,7 @@ $('body').on('click', '.btn_confirmaResumen', function(event) {
     console.log(data);
     console.log("error com_carga_c/consultaArticulo");
   });
+
+
 
 });
