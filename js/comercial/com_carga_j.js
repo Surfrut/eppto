@@ -331,9 +331,4 @@ $('body').on('click', '.btn_confirmaResumen', function(event) {
     console.log("error com_carga_c/consultaArticulo");
   });
 
-  //CONSULTA ARTICULOS
-  //CONSULTA CLIENTES
-  //CONSULTA CLIENTES
-  // CONSULTA SHIP-TO
-  // CONSULTA SHIP-TO
 });

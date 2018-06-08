@@ -23,7 +23,7 @@
 			<a href="<?php echo base_url() ?>" class="brand-logo">Control Procesos de Calidad</a>
 			<a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
 			<ul class="right hide-on-med-and-down ul_sesion">
-				<li><a class="waves-effect btn_descargaTemplate" href="#">Descarga Template</a></li>
+				<li><a class="waves-effect btn_descargaTemplate" href="#">Descarga Template<i class="material-icons right">menu</i></a></li>
 			</ul>
 			<ul id="mobile-demo" class="side-nav">
 				<li><div class="userView">
