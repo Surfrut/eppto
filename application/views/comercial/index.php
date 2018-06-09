@@ -330,7 +330,7 @@
             </div>
           </div>
         </div>
-        <div class="file-field input-field" style="display: none;">
+        <div class="file-field input-field" style="display: none;" id="campodelArchivo">
           <div class="btn color_eppto">
             <span>Archivo</span>
             <input type="file" name="mi_archivo" class="nombreArchivo">

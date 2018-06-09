@@ -4,7 +4,7 @@ $('.btn_pptoMasivo').on('click', function(){
   $('.modal_cargaMasiva').modal('open');
 });
 $("body").on('click', '.with-gap',function() {
-  console.log($(this).val());
+  $('#campodelArchivo').css('display', 'block');
 });
 
 $('.btn_descargaTemplate').on('click',function(){
