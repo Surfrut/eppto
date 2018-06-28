@@ -381,26 +381,7 @@ class comercial_m extends CI_Model{
   }
 
   function descargaPersonalizada($datos){
- // $encontroprimero=0;
- //  if(strpos($datos,'SURFRUT')){
- //    $filtrodominio="in('SURFRUT'";
- //    $encontroprimero=1;
- //  }else {
- //    $filtrodominio="in(";
- //  }
- //  if(strpos($datos,'PUREFRUIT')){
- //
- //  if($encontroprimero){
- //     $filtrodominio=$filtrodominio.",'PUREFRUI')";
- //   }else{
- //     $filtrodominio=$filtrodominio."'PUREFRUI')";
- //
- //   }
- //
- //  }else{
- //    $filtrodominio=$filtrodominio.")";
- //
- //  }
+
 
     $query1 = '';
     $datos = substr($datos,0,-1);
@@ -470,6 +451,11 @@ class comercial_m extends CI_Model{
       pre_categoria
       from presupuesto
       where pre_categoria = '".$resultado1[$i]['pre_categoria']."' and pre_fecha = '".$resultado1[$i]['pre_fecha']."' UNION ALL ";
+
+
+
+
+
     }
     $query2 = substr($query2,0,-10);
     $resultado;
@@ -492,6 +478,11 @@ class comercial_m extends CI_Model{
     $query1 = substr($query1,0,-10);
     $resultado1 = $this->db->query($query1)->result_array();
     $query2 = '';
+    $filtrodominio = '';
+
+    $encontro_surfrut=false;
+    $encontro_purefruit=false;
+
     for ($i=0; $i < count($resultado1); $i++) {
       $query2 .= " select
       pre_dominio,
@@ -560,7 +551,46 @@ class comercial_m extends CI_Model{
       pre_categoria
       from presupuesto
       where pre_categoria = '".$resultado1[$i]['car_categoria']."' and pre_fecha = '".$resultado1[$i]['car_fecha']."' UNION ALL ";
-    }
+      // var_dump($resultado1[$i]['car_categoria']);
+      // var_dump(strpos($resultado1[$i]['car_categoria'],'MARRASCHINO'));
+      if (!$encontro_surfrut) {
+
+        if(strpos($resultado1[$i]['car_categoria'],'SURFRUT') === false){
+
+        }else{
+          if($encontro_purefruit){
+            $filtrodominio=$filtrodominio.",'200'";
+            $encontro_surfrut = true;
+          }else{
+            $filtrodominio=$filtrodominio."IN('200'";
+            $encontro_surfrut = true;
+          }
+
+        }
+        // else{
+        //   $filtrodominio=$filtrodominio.")";
+        // }
+      }//FIN !$encontro_surfrut
+      // ******************
+      if (!$encontro_purefruit) {
+        if(strpos($resultado1[$i]['car_categoria'],'PUREFRUI') === false){
+
+        }else{
+          if($encontro_surfrut){
+            $filtrodominio=$filtrodominio.",'206'";
+            $encontro_purefruit = true;
+          }else{
+            $filtrodominio=$filtrodominio."IN('206'";
+            $encontro_purefruit = true;
+          }
+        }
+        // else{
+        //   $filtrodominio=$filtrodominio.")";
+        // }
+      }//FIN !$encontro_surfrut
+
+    }//fin for
+    $filtrodominio = $filtrodominio.")";
     $query2 = substr($query2,0,-10)." UNION ALL
 	select
       desp_dominio,
@@ -630,8 +660,8 @@ class comercial_m extends CI_Model{
       0,
       0,
       ''
-      from despachos";
-    // var_dump($query2);
+      from despachos where desp_dominio ".$filtrodominio.";";
+    // var_dump($filtrodominio);
     $resultado;
     if($this->db->query($query2)){
       $resultado = $this->db->query($query2)->result_array();
